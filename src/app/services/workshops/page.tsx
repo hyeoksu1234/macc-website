@@ -144,7 +144,7 @@ export default function WorkshopsPage() {
       highlightText: "당신의 멘탈은 안녕하신가요?",
       description: "직장에서 활용할 수 있는 멘탈 관리 스킬을 이해하고, 멘탈 저널링을 통해서 새로운 습관으로 만들어 가는 챌린지를 함께 합니다. 구글에서도 활용하는 호흡 훈련을 기반으로 한, 멘탈 코움을 만들어 생산성 높은 자기 마음 사용법을 배우는 시간입니다.",
       category: "personal",
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1470&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1470&auto=format&fit=crop",
       features: [
         "마음 챙김 호흡법 이론과 훈련 : 마음 챙김의 뇌과학적 효과와 스트레스 관리에 적용하는 훈련 함께 하기",
         "멘탈 저널링 연습 : 마음자극 5요인을 활용한 멘탈 저널링 배우고 활용하기",

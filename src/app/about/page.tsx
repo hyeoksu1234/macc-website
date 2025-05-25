@@ -1,8 +1,14 @@
-import React from "react";
+'use client';
+
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function AboutPage() {
+  // 카드 플립 상태 관리
+  const [flippedCards, setFlippedCards] = useState<number[]>([]);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
   // 임시 핵심 가치 데이터
   const coreValues = [
     {
@@ -82,17 +88,59 @@ export default function AboutPage() {
     }
   ];
 
+  // 스크롤 이벤트 핸들러
+  useEffect(() => {
+    const handleScroll = () => {
+      cardRefs.current.forEach((cardRef, index) => {
+        if (cardRef) {
+          const rect = cardRef.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          const cardCenter = rect.top + rect.height / 2;
+          const isInViewport = cardCenter >= windowHeight * 0.3 && cardCenter <= windowHeight * 0.7;
+          
+          const memberId = teamMembers[index]?.id;
+          if (memberId) {
+            if (isInViewport && !flippedCards.includes(memberId)) {
+              setFlippedCards(prev => [...prev, memberId]);
+            } else if (!isInViewport && flippedCards.includes(memberId)) {
+              setFlippedCards(prev => prev.filter(id => id !== memberId));
+            }
+          }
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // 초기 실행
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [flippedCards, teamMembers]);
+
   return (
     <div className="flex flex-col">
       {/* 히어로 섹션 - 모바일 최적화 */}
-      <section className="relative w-full h-[25vh] sm:h-[30vh] md:h-[40vh] flex items-center bg-gradient-to-r from-[#0061ad] to-[#004d8a]">
-        <div className="container mx-auto px-4 z-10 text-white">
-          <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-4 break-keep">
-            소개
-          </h1>
-          <p className="text-base sm:text-lg md:text-2xl max-w-3xl break-keep">
-            마스터피스 얼라이언스는 개인과 조직의 지속가능한 성장을 돕습니다
-          </p>
+      <section className="relative w-full h-[25vh] sm:h-[30vh] md:h-[40vh] flex items-center bg-white">
+        <div className="container mx-auto px-4 z-10">
+          <div className="flex flex-col items-center text-center">
+            {/* 로고 영역 */}
+            <div className="mb-4 sm:mb-6">
+              <div className="mb-4 sm:mb-6">
+                <Image
+                  src="/og-image.png"
+                  alt="Masterpiece Alliance Logo"
+                  width={600}
+                  height={300}
+                  className="h-32 sm:h-40 md:h-52 lg:h-64 xl:h-72 w-auto mx-auto mb-4"
+                />
+              </div>
+              {/* <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 text-gray-800 break-keep">
+                Masterpiece Alliance
+              </h1> */}
+            </div>
+            <p className="text-xl sm:text-2xl md:text-3xl lg:text-2xl font-bold italic max-w-4xl text-gray-800 break-keep">
+              개인과 조직의 지속가능한 성장을 위한 참 좋은 파트너
+            </p>
+          </div>
         </div>
       </section>
 
@@ -211,50 +259,83 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="space-y-8 sm:space-y-12">
-              {teamMembers.map((member, index) => (
-                <div key={member.id} className="group flex flex-col items-center gap-6 sm:gap-8 p-6 sm:p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
-                  <div className="relative flex-shrink-0">
-                    <div className="relative w-36 h-36 sm:w-48 sm:h-48 rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-300">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
+              {teamMembers.map((member, index) => {
+                const isFlipped = flippedCards.includes(member.id);
+                return (
+                  <div 
+                    key={member.id} 
+                    ref={(el) => { cardRefs.current[index] = el; }}
+                    className="group relative h-[400px] sm:h-[450px] lg:h-[500px]" 
+                    style={{ perspective: '1000px' }}
+                  >
+                    <div 
+                      className="relative w-full h-full transition-transform duration-700"
+                      style={{ 
+                        transformStyle: 'preserve-3d',
+                        transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
+                      }}
+                    >
+                    
+                    {/* 앞면 - 사진 */}
+                    <div 
+                      className="absolute inset-0 w-full h-full rounded-xl overflow-hidden shadow-lg"
+                      style={{ backfaceVisibility: 'hidden' }}
+                    >
                       <Image
                         src={member.imageUrl}
                         alt={member.name}
                         fill
                         style={{ objectFit: "cover" }}
-                        className="transition-transform duration-300 group-hover:scale-105"
+                        className="transition-transform duration-300"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                      <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-white">
+                        <h3 className="text-xl sm:text-2xl font-bold mb-1 break-keep">
+                          {member.name}
+                        </h3>
+                        <p className="text-sm sm:text-base opacity-90 break-keep">
+                          {member.role}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  
-                  <div className="flex-1 text-center space-y-3 sm:space-y-4">
-                    <div>
-                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 sm:mb-3 break-keep">
-                        {member.name}
-                      </h3>
-                      <p className="text-sm sm:text-lg md:text-xl text-[#0061ad] font-bold break-keep">
-                        {member.role}
-                      </p>
-                    </div>
-                    
-                    <p className="text-base sm:text-lg text-gray-600 leading-relaxed break-keep mb-3 sm:mb-4">
-                      {member.bio}
-                    </p>
 
-                    <div className="space-y-2">
-                      <h4 className="text-xs sm:text-sm font-semibold text-[#0061ad] uppercase tracking-wide">자격증 및 전문분야</h4>
-                      <ul className="space-y-1">
-                        {member.credentials.map((credential, credIndex) => (
-                          <li key={credIndex} className="text-xs sm:text-sm text-gray-600 flex items-start break-keep">
-                            <span className="text-[#0061ad] mr-2 flex-shrink-0">•</span>
-                            <span>{credential}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    {/* 뒷면 - 정보 */}
+                    <div 
+                      className="absolute inset-0 w-full h-full bg-white rounded-xl shadow-lg p-2 sm:p-3 flex flex-col justify-between"
+                      style={{ 
+                        backfaceVisibility: 'hidden',
+                        transform: 'rotateY(180deg)'
+                      }}
+                    >
+                      <div className="text-center mb-4 mt-8">
+                        <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-gray-900 mb-3 break-keep">
+                          {member.name}
+                        </h3>
+                        <p className="text-xs sm:text-sm text-[#0061ad] font-semibold break-keep line-clamp-2 mb-2">
+                          {member.role}
+                        </p>
+                        <p className="text-xs text-gray-600 leading-relaxed break-keep">
+                          {member.bio}
+                        </p>
+                      </div>
+
+                      <div className="ml-2 mb-4">
+                        <h4 className="text-sm sm:text-base font-semibold text-[#0061ad] uppercase tracking-wide mb-3">자격증 및 전문분야</h4>
+                        <ul className="space-y-1">
+                          {member.credentials.map((credential, credIndex) => (
+                            <li key={credIndex} className="text-sm sm:text-base text-gray-600 flex items-start break-keep">
+                              <span className="text-[#0061ad] mr-2 flex-shrink-0 text-sm sm:text-base">•</span>
+                              <span className="leading-relaxed">{credential}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
