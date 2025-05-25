@@ -13,7 +13,7 @@ const Header = () => {
 
   // 로고 사이즈 설정 (픽셀 단위로 직접 지정)
   const LOGO_SIZE = {
-    mobile: 32,   // 모바일 높이 (px)
+    mobile: 28,   // 모바일 높이 (px) - 조금 더 작게
     desktop: 40   // 데스크톱 높이 (px)
   };
 
@@ -43,14 +43,14 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-white bg-opacity-95 shadow-sm z-50">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div className="container mx-auto px-4 py-2 md:py-3 flex justify-between items-center">
         <Link href="/" className="flex items-center">
           <Image 
             src="/ma_font.png"
             alt="Masterpiece Alliance"
             width={200}
             height={20}
-            className="w-auto my-2 logo-responsive"
+            className="w-auto my-1 md:my-2 logo-responsive"
             style={{ 
               width: 'auto', 
               height: `${LOGO_SIZE.mobile}px`
@@ -169,15 +169,15 @@ const Header = () => {
           </Link>
         </nav>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Button - 더 큰 터치 영역 */}
         <button 
-          className="md:hidden text-gray-700 hover:text-[#0061ad] focus:outline-none transition-colors duration-300"
+          className="md:hidden text-gray-700 hover:text-[#0061ad] focus:outline-none transition-colors duration-300 p-2 -mr-2"
           onClick={toggleMenu}
           aria-label="메뉴 열기"
         >
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
-            className="h-6 w-6" 
+            className="h-7 w-7" 
             fill="none" 
             viewBox="0 0 24 24" 
             stroke="currentColor"
@@ -191,28 +191,28 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Navigation - 전체 화면으로 확장 */}
       {isMenuOpen && (
         <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.3 }}
-          className="md:hidden bg-white shadow-lg"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.2 }}
+          className="md:hidden bg-white shadow-lg border-t border-gray-100"
         >
-          <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            <Link href="/" onClick={closeMenu} className="text-gray-700 hover:text-[#0061ad] font-medium py-2 transition-colors duration-300 break-keep">
+          <div className="container mx-auto px-4 py-4 flex flex-col">
+            <Link href="/" onClick={closeMenu} className="text-gray-700 hover:text-[#0061ad] font-medium py-3 text-base transition-colors duration-300 break-keep border-b border-gray-100">
               홈
             </Link>
-            <Link href="/about" onClick={closeMenu} className="text-gray-700 hover:text-[#0061ad] font-medium py-2 transition-colors duration-300 break-keep">
+            <Link href="/about" onClick={closeMenu} className="text-gray-700 hover:text-[#0061ad] font-medium py-3 text-base transition-colors duration-300 break-keep border-b border-gray-100">
               소개
             </Link>
             
             {/* 모바일 서비스 드롭다운 */}
-            <div>
+            <div className="border-b border-gray-100">
               <button 
                 onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                className="text-gray-700 hover:text-[#0061ad] font-medium py-2 transition-colors duration-300 break-keep flex items-center justify-between w-full"
+                className="text-gray-700 hover:text-[#0061ad] font-medium py-3 text-base transition-colors duration-300 break-keep flex items-center justify-between w-full"
               >
                 <span>서비스</span>
                 <div className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isMobileServicesOpen ? 'rotate-180' : ''}`}>
@@ -228,32 +228,30 @@ const Header = () => {
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.2 }}
-                  className="mt-2 bg-gray-50 rounded-lg overflow-hidden"
+                  className="bg-gray-50"
                 >
                   <Link 
                     href="/services/main-biz" 
                     onClick={closeMenu} 
-                    className="group flex items-center justify-between px-4 py-4 text-gray-700 hover:bg-gradient-to-r hover:from-[#0061ad]/10 hover:to-[#004d8a]/10 hover:text-[#0061ad] transition-all duration-300 break-keep"
+                    className="group flex items-center justify-between px-6 py-4 text-gray-700 hover:bg-[#0061ad]/5 hover:text-[#0061ad] transition-all duration-300 break-keep"
                   >
                     <div>
-                      <div className="font-semibold text-sm mb-1">Main Biz</div>
-                      <div className="text-xs text-gray-500 group-hover:text-[#0061ad]/70">핵심 비즈니스 서비스</div>
+                      <div className="font-medium text-base mb-1">Main Biz</div>
+                      <div className="text-sm text-gray-500 group-hover:text-[#0061ad]/70">핵심 비즈니스 서비스</div>
                     </div>
                     <svg className="w-4 h-4 text-gray-400 group-hover:text-[#0061ad] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   </Link>
                   
-                  <div className="border-t border-gray-200/50 mx-4"></div>
-                  
                   <Link 
                     href="/services/workshops" 
                     onClick={closeMenu} 
-                    className="group flex items-center justify-between px-4 py-4 text-gray-700 hover:bg-gradient-to-r hover:from-[#0061ad]/10 hover:to-[#004d8a]/10 hover:text-[#0061ad] transition-all duration-300 break-keep"
+                    className="group flex items-center justify-between px-6 py-4 text-gray-700 hover:bg-[#0061ad]/5 hover:text-[#0061ad] transition-all duration-300 break-keep"
                   >
                     <div>
-                      <div className="font-semibold text-sm mb-1">전문 프로그램</div>
-                      <div className="text-xs text-gray-500 group-hover:text-[#0061ad]/70">전문 교육 프로그램</div>
+                      <div className="font-medium text-base mb-1">전문 프로그램</div>
+                      <div className="text-sm text-gray-500 group-hover:text-[#0061ad]/70">전문 교육 프로그램</div>
                     </div>
                     <svg className="w-4 h-4 text-gray-400 group-hover:text-[#0061ad] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -263,13 +261,13 @@ const Header = () => {
               )}
             </div>
             
-            <Link href="/blog" onClick={closeMenu} className="text-gray-700 hover:text-[#0061ad] font-medium py-2 transition-colors duration-300 break-keep">
+            <Link href="/blog" onClick={closeMenu} className="text-gray-700 hover:text-[#0061ad] font-medium py-3 text-base transition-colors duration-300 break-keep border-b border-gray-100">
               칼럼
             </Link>
-            <Link href="/contact" onClick={closeMenu} className="text-gray-700 hover:text-[#0061ad] font-medium py-2 transition-colors duration-300 break-keep">
+            <Link href="/contact" onClick={closeMenu} className="text-gray-700 hover:text-[#0061ad] font-medium py-3 text-base transition-colors duration-300 break-keep border-b border-gray-100">
               상담 신청
             </Link>
-            <Link href="/location" onClick={closeMenu} className="text-gray-700 hover:text-[#0061ad] font-medium py-2 transition-colors duration-300 break-keep">
+            <Link href="/location" onClick={closeMenu} className="text-gray-700 hover:text-[#0061ad] font-medium py-3 text-base transition-colors duration-300 break-keep">
               오시는 길
             </Link>
           </div>

@@ -132,27 +132,27 @@ export default function MainBizPage() {
 
   return (
     <div className="flex flex-col">
-      {/* 히어로 섹션 */}
-      <section className="relative w-full h-[30vh] md:h-[40vh] flex items-center bg-gradient-to-r from-[#0061ad] to-[#004d8a]">
+      {/* 히어로 섹션 - 모바일 최적화 */}
+      <section className="relative w-full h-[25vh] sm:h-[30vh] md:h-[40vh] flex items-center bg-gradient-to-r from-[#0061ad] to-[#004d8a]">
         <div className="container mx-auto px-4 z-10 text-white">
-          <h1 className="text-3xl md:text-5xl font-bold mb-4 break-keep">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-4 break-keep">
             Main Biz
           </h1>
-          <p className="text-lg md:text-2xl mb-8 max-w-3xl break-keep">
+          <p className="text-base sm:text-lg md:text-2xl max-w-3xl break-keep">
             Masterpiece Alliance의 핵심 비즈니스
           </p>
         </div>
       </section>
 
-      {/* 서비스 목차 */}
-      <section className="py-12 bg-gray-50">
+      {/* 서비스 목차 - 모바일 최적화 */}
+      <section className="py-8 sm:py-12 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-6">
             {services.map((service) => (
               <a
                 key={service.id}
                 href={`#${service.title}`}
-                className="px-6 py-3 bg-white border-2 border-gray-200 rounded-full text-gray-700 font-medium hover:border-[#0061ad] hover:text-[#0061ad] transition-all duration-300 shadow-sm hover:shadow-md"
+                className="px-4 sm:px-6 py-2 sm:py-3 bg-white border-2 border-gray-200 rounded-full text-sm sm:text-base text-gray-700 font-medium hover:border-[#0061ad] hover:text-[#0061ad] transition-all duration-300 shadow-sm hover:shadow-md"
               >
                 {service.title}
               </a>
@@ -161,18 +161,18 @@ export default function MainBizPage() {
         </div>
       </section>
 
-      {/* 서비스 상세 섹션 */}
+      {/* 서비스 상세 섹션 - 모바일 최적화 */}
       {services.map((service, index) => (
         <section
           key={service.id}
           id={service.title}
-          className={`py-16 md:py-24 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
+          className={`py-12 sm:py-16 md:py-24 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
         >
           <div className="container mx-auto px-4">
-            <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-8 lg:gap-16`}>
-              {/* 이미지 */}
+            <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-6 sm:gap-8 lg:gap-16`}>
+              {/* 이미지 - 모바일 최적화 */}
               <div className="w-full lg:w-1/2">
-                <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-lg">
+                <div className="relative h-[250px] sm:h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-lg">
                   <Image
                     src={service.image}
                     alt={service.title}
@@ -184,32 +184,32 @@ export default function MainBizPage() {
                 </div>
               </div>
               
-              {/* 콘텐츠 */}
-              <div className="w-full lg:w-1/2 space-y-6">
+              {/* 콘텐츠 - 모바일 최적화 */}
+              <div className="w-full lg:w-1/2 space-y-4 sm:space-y-6">
                 {/* 제목 구조 */}
                 <div>
-                  <p className="text-[#0061ad] font-bold text-lg mb-2 break-keep">
+                  <p className="text-[#0061ad] font-bold text-base sm:text-lg mb-1 sm:mb-2 break-keep">
                     {service.description}
                   </p>
-                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 break-keep">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 break-keep">
                     {service.title}
                   </h2>
                   {service.highlightText && (
-                    <p className="text-xl md:text-2xl font-bold text-gray-900 mb-6 break-keep">
+                    <p className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 break-keep">
                       {service.highlightText}
                     </p>
                   )}
                 </div>
 
                 {/* 상세 설명 */}
-                <p className="text-gray-700 text-lg leading-relaxed break-keep">
+                <p className="text-gray-700 text-base sm:text-lg leading-relaxed break-keep">
                   {service.detailedDescription}
                 </p>
 
                 {/* 부제목 (파란색 박스) */}
                 {service.subtitle && (
-                  <div className="bg-[#0061ad] text-white p-4 rounded-lg">
-                    <p className="text-sm md:text-base leading-relaxed break-keep">
+                  <div className="bg-[#0061ad] text-white p-3 sm:p-4 rounded-lg">
+                    <p className="text-xs sm:text-sm md:text-base leading-relaxed break-keep">
                       {service.subtitle}
                     </p>
                   </div>
@@ -218,14 +218,14 @@ export default function MainBizPage() {
                 {/* 주요 서비스 - programs가 없는 경우만 표시 */}
                 {!service.programs && (
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-6">주요 서비스</h3>
-                    <div className="space-y-4">
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">주요 서비스</h3>
+                    <div className="space-y-3 sm:space-y-4">
                       {service.features.map((feature, featureIndex) => (
                         <div key={featureIndex} className="flex items-start">
-                          <svg className="w-6 h-6 text-[#0061ad] mt-1 mr-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <svg className="w-5 h-5 sm:w-6 sm:h-6 text-[#0061ad] mt-0.5 sm:mt-1 mr-3 sm:mr-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                           </svg>
-                          <span className="font-bold text-gray-900 break-keep">{feature}</span>
+                          <span className="font-bold text-sm sm:text-base text-gray-900 break-keep">{feature}</span>
                         </div>
                       ))}
                     </div>
@@ -235,16 +235,16 @@ export default function MainBizPage() {
                 {/* 주요 서비스 (Masterpiece Career Society의 프로그램) */}
                 {service.programs && (
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-6">주요 서비스</h3>
-                    <div className="space-y-4">
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">주요 서비스</h3>
+                    <div className="space-y-3 sm:space-y-4">
                       {service.programs.map((program, programIndex) => (
                         <div key={programIndex} className="flex items-start">
-                          <svg className="w-6 h-6 text-[#0061ad] mt-1 mr-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <svg className="w-5 h-5 sm:w-6 sm:h-6 text-[#0061ad] mt-0.5 sm:mt-1 mr-3 sm:mr-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                           </svg>
                           <div>
-                            <h4 className="font-bold text-gray-900 mb-1 break-keep">{program.title}</h4>
-                            <p className="text-gray-600 break-keep">{program.description}</p>
+                            <h4 className="font-bold text-sm sm:text-base text-gray-900 mb-1 break-keep">{program.title}</h4>
+                            <p className="text-xs sm:text-sm text-gray-600 break-keep">{program.description}</p>
                           </div>
                         </div>
                       ))}
@@ -253,8 +253,8 @@ export default function MainBizPage() {
                 )}
 
                 {/* 대상 */}
-                <div className="border-t pt-6">
-                  <p className="text-gray-600">
+                <div className="border-t pt-4 sm:pt-6">
+                  <p className="text-sm sm:text-base text-gray-600">
                     <span className="font-semibold">대상: </span>
                     <span className="break-keep">{service.targetAudience}</span>
                   </p>
@@ -265,23 +265,23 @@ export default function MainBizPage() {
         </section>
       ))}
 
-      {/* CTA 섹션 */}
-      <section className="py-16 bg-[#0061ad] text-white">
+      {/* CTA 섹션 - 모바일 최적화 */}
+      <section className="py-12 sm:py-16 bg-[#0061ad] text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 break-keep">
             어떤 서비스가 필요한지 궁금하신가요?
           </h2>
-          <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-3xl mx-auto break-keep">
             전문가와의 무료 상담을 통해 귀하에게 가장 적합한 서비스를 찾아보세요.
           </p>
           <Link 
             href="/contact" 
-            className="inline-flex items-center bg-white text-[#0061ad] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors duration-300"
+            className="inline-flex items-center bg-white text-[#0061ad] px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-gray-100 transition-colors duration-300"
           >
             무료 상담 신청
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 ml-2"
+              className="h-4 w-4 sm:h-5 sm:w-5 ml-2"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

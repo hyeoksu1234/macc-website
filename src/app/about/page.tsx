@@ -84,29 +84,29 @@ export default function AboutPage() {
 
   return (
     <div className="flex flex-col">
-      {/* 히어로 섹션 */}
-      <section className="relative w-full h-[30vh] md:h-[40vh] flex items-center bg-gradient-to-r from-[#0061ad] to-[#004d8a]">
+      {/* 히어로 섹션 - 모바일 최적화 */}
+      <section className="relative w-full h-[25vh] sm:h-[30vh] md:h-[40vh] flex items-center bg-gradient-to-r from-[#0061ad] to-[#004d8a]">
         <div className="container mx-auto px-4 z-10 text-white">
-          <h1 className="text-3xl md:text-5xl font-bold mb-4 break-keep">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-4 break-keep">
             소개
           </h1>
-          <p className="text-lg md:text-2xl mb-8 max-w-3xl break-keep">
+          <p className="text-base sm:text-lg md:text-2xl max-w-3xl break-keep">
             마스터피스 얼라이언스는 개인과 조직의 지속가능한 성장을 돕습니다
           </p>
         </div>
       </section>
 
-      {/* 소개 본문 */}
-      <section className="py-16 md:py-24 bg-white">
+      {/* 소개 본문 - 모바일 최적화 */}
+      <section className="py-12 sm:py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="prose prose-lg md:prose-xl max-w-none">
-              <div className="text-lg md:text-xl text-gray-700 leading-relaxed space-y-8">
+            <div className="prose prose-base sm:prose-lg md:prose-xl max-w-none">
+              <div className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed space-y-6 sm:space-y-8">
                 <p className="break-keep">
-                  Masterpiece Alliance는 개인과 조직의 행복을 위해 함께 손잡고 걷는 동반의 가치를 지향합니다.<br/>
+                  Masterpiece Alliance는 개인과 조직의 행복을 위해 함께 손잡고 걷는 동반의 가치를 지향합니다.<br className="hidden sm:block"/>
                   단순히 고객 혹은 고객사의 발전이라는 결과에만 집중하지 않습니다. 
                   결과를 만드는 과정에도 큰 무게를 두는 것은, <strong className="text-[#0061ad]">명작(Masterpiece)을 만들기 위해
-                  함께 만드는(Alliance) 가치가 지속가능한 발전을 만든다</strong>는 <br /> 믿음이 있기 때문입니다.
+                  함께 만드는(Alliance) 가치가 지속가능한 발전을 만든다</strong>는 <br className="hidden sm:block" /> 믿음이 있기 때문입니다.
                 </p>
 
                 <p className="break-keep">
@@ -115,9 +115,9 @@ export default function AboutPage() {
                   만들어 가는 특별한 MA만의 솔루션에 고객을 초대합니다.
                 </p>
 
-                {/* 첫 번째 이미지 */}
-                <div className="my-12">
-                  <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-lg">
+                {/* 첫 번째 이미지 - 모바일 최적화 */}
+                <div className="my-8 sm:my-12">
+                  <div className="relative h-[200px] sm:h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-lg">
                     <Image
                       src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1470&auto=format&fit=crop"
                       alt="Masterpiece Alliance 솔루션"
@@ -143,9 +143,9 @@ export default function AboutPage() {
                   다양한 서비스를 제공하고 있습니다.
                 </p>
 
-                {/* 두 번째 이미지 */}
-                <div className="my-12">
-                  <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-lg">
+                {/* 두 번째 이미지 - 모바일 최적화 */}
+                <div className="my-8 sm:my-12">
+                  <div className="relative h-[200px] sm:h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-lg">
                     <Image
                       src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1470&auto=format&fit=crop"
                       alt="다양성과 존중"
@@ -157,7 +157,7 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                <p className="text-xl md:text-2xl font-medium text-[#0061ad] text-center py-8 break-keep">
+                <p className="text-lg sm:text-xl md:text-2xl font-medium text-[#0061ad] text-center py-6 sm:py-8 break-keep">
                   함께 만드는 지속가능한 발전을 위해 노력하는 Masterpiece Alliance는 여러분의 참 좋은 파트너입니다.
                 </p>
               </div>
@@ -166,20 +166,20 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 미션, 비전, 전략, 핵심가치 섹션 */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      {/* 미션, 비전, 전략, 핵심가치 섹션 - 모바일 최적화 */}
+      <section className="py-12 sm:py-16 md:py-24 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-8xl mx-auto">
             <div className="text-center mb-3">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-0">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-0">
                 우리의 철학
               </h2>
-              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-0">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-0">
                 Masterpiece Alliance의 미션, 비전, 전략, 핵심가치를 소개합니다
               </p>
               
-              {/* 추가된 철학 문구 */}
-              <p className="text-xl md:text-3xl font-bold text-[#0061ad] max-w-6xl mx-auto mt-8 break-keep">
+              {/* 추가된 철학 문구 - 모바일 최적화 */}
+              <p className="text-base sm:text-xl md:text-3xl font-bold text-[#0061ad] max-w-6xl mx-auto mt-6 sm:mt-8 break-keep">
                 고객의 정체성에 기반하여 마켓보다 반 박자 빠르게, 지속가능하게!
               </p>
             </div>
@@ -198,24 +198,24 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 전문가 프로필 섹션 */}
-      <section className="py-16 md:py-24 bg-white">
+      {/* 전문가 프로필 섹션 - 모바일 최적화 */}
+      <section className="py-12 sm:py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 break-keep">
+            <div className="text-center mb-10 sm:mb-16">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 break-keep">
                 우리의 전문가
               </h2>
-              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto break-keep">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto break-keep">
                 각 분야의 전문 지식과 풍부한 경험을 바탕으로 여러분의 성장을 지원하는 전문가들을 소개합니다
               </p>
             </div>
 
-            <div className="space-y-12">
+            <div className="space-y-8 sm:space-y-12">
               {teamMembers.map((member, index) => (
-                <div key={member.id} className="group flex flex-col md:flex-row items-center gap-8 p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+                <div key={member.id} className="group flex flex-col items-center gap-6 sm:gap-8 p-6 sm:p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
                   <div className="relative flex-shrink-0">
-                    <div className="relative w-48 h-48 rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-300">
+                    <div className="relative w-36 h-36 sm:w-48 sm:h-48 rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-300">
                       <Image
                         src={member.imageUrl}
                         alt={member.name}
@@ -227,22 +227,25 @@ export default function AboutPage() {
                     </div>
                   </div>
                   
-                  <div className="flex-1 text-center md:text-left space-y-4">
+                  <div className="flex-1 text-center space-y-3 sm:space-y-4">
                     <div>
-                      <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 break-keep">
-                        {member.name} <span className="text-lg md:text-xl text-[#0061ad] font-bold">- {member.role}</span>
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 sm:mb-3 break-keep">
+                        {member.name}
                       </h3>
+                      <p className="text-sm sm:text-lg md:text-xl text-[#0061ad] font-bold break-keep">
+                        {member.role}
+                      </p>
                     </div>
                     
-                    <p className="text-lg text-gray-600 leading-relaxed break-keep mb-4">
+                    <p className="text-base sm:text-lg text-gray-600 leading-relaxed break-keep mb-3 sm:mb-4">
                       {member.bio}
                     </p>
 
                     <div className="space-y-2">
-                      <h4 className="text-sm font-semibold text-[#0061ad] uppercase tracking-wide">자격증 및 전문분야</h4>
+                      <h4 className="text-xs sm:text-sm font-semibold text-[#0061ad] uppercase tracking-wide">자격증 및 전문분야</h4>
                       <ul className="space-y-1">
                         {member.credentials.map((credential, credIndex) => (
-                          <li key={credIndex} className="text-sm text-gray-600 flex items-center break-keep">
+                          <li key={credIndex} className="text-xs sm:text-sm text-gray-600 flex items-start break-keep">
                             <span className="text-[#0061ad] mr-2 flex-shrink-0">•</span>
                             <span>{credential}</span>
                           </li>
@@ -257,24 +260,24 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CTA 섹션 */}
-      <section className="py-16 md:py-20 bg-[#0061ad] text-white">
+      {/* CTA 섹션 - 모바일 최적화 */}
+      <section className="py-12 sm:py-16 md:py-20 bg-[#0061ad] text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 break-keep">
             여러분의 참 좋은 파트너
           </h2>
-          <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-3xl mx-auto break-keep">
             Masterpiece Alliance와 함께 지속가능한 성장의 여정을 시작해보세요
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center bg-white text-[#0061ad] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors duration-300"
+              className="inline-flex items-center justify-center bg-white text-[#0061ad] px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-gray-100 transition-colors duration-300"
             >
               상담 신청하기
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 ml-2"
+                className="h-4 w-4 sm:h-5 sm:w-5 ml-2"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -284,13 +287,13 @@ export default function AboutPage() {
             </Link>
             <Link
               href="/services/main-biz"
-              className="inline-flex items-center border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-[#0061ad] transition-colors duration-300"
+              className="inline-flex items-center justify-center border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-white hover:text-[#0061ad] transition-colors duration-300"
             >
               Main Biz
             </Link>
             <Link
               href="/services/workshops"
-              className="inline-flex items-center border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-[#0061ad] transition-colors duration-300"
+              className="inline-flex items-center justify-center border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-white hover:text-[#0061ad] transition-colors duration-300"
             >
               전문 프로그램
             </Link>

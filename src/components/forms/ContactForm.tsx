@@ -97,8 +97,6 @@ const ContactForm = () => {
     }
   };
 
-
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
@@ -143,43 +141,43 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg border border-gray-100">
-      <div className="flex items-center mb-6">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 md:h-8 md:w-8 text-[#0061ad] mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <div className="bg-white p-4 sm:p-6 md:p-8 rounded-lg shadow-lg border border-gray-100">
+      <div className="flex items-center mb-4 sm:mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 text-[#0061ad] mr-2 sm:mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
         </svg>
-        <h2 className="text-xl md:text-2xl font-bold break-keep">문의 양식</h2>
+        <h2 className="text-lg sm:text-xl md:text-2xl font-bold break-keep">문의 양식</h2>
       </div>
 
-      {/* 성공 메시지 */}
+      {/* 성공 메시지 - 모바일 최적화 */}
       {status === 'success' && (
-        <div className="mb-6 p-4 bg-green-50 border border-green-200 text-green-800 rounded-md flex items-start">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+        <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-green-50 border border-green-200 text-green-800 rounded-md flex items-start">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
           </svg>
           <div>
-            <p className="font-semibold break-keep">문의가 성공적으로 접수되었습니다!</p>
-            <p className="text-sm mt-1 break-keep">담당자가 검토 후 빠른 시간 내에 연락드리겠습니다.</p>
+            <p className="text-sm sm:text-base font-semibold break-keep">문의가 성공적으로 접수되었습니다!</p>
+            <p className="text-xs sm:text-sm mt-1 break-keep">담당자가 검토 후 빠른 시간 내에 연락드리겠습니다.</p>
           </div>
         </div>
       )}
 
-      {/* 에러 메시지 */}
+      {/* 에러 메시지 - 모바일 최적화 */}
       {status === 'error' && (
-        <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-800 rounded-md flex items-start">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+        <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-red-50 border border-red-200 text-red-800 rounded-md flex items-start">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
           </svg>
           <div>
-            <p className="font-semibold break-keep">문의 접수 중 오류가 발생했습니다</p>
-            <p className="text-sm mt-1 break-keep">{errorMessage}</p>
+            <p className="text-sm sm:text-base font-semibold break-keep">문의 접수 중 오류가 발생했습니다</p>
+            <p className="text-xs sm:text-sm mt-1 break-keep">{errorMessage}</p>
           </div>
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1 break-keep">
+          <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 break-keep">
             이름 <span className="text-red-500">*</span>
           </label>
           <input
@@ -188,14 +186,14 @@ const ContactForm = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#0061ad] focus:border-[#0061ad] transition"
+            className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-md focus:ring-[#0061ad] focus:border-[#0061ad] transition text-sm sm:text-base"
             required
             disabled={status === 'submitting'}
           />
         </div>
         
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1 break-keep">
+          <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 break-keep">
             이메일 <span className="text-red-500">*</span>
           </label>
           <input
@@ -204,14 +202,14 @@ const ContactForm = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#0061ad] focus:border-[#0061ad] transition"
+            className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-md focus:ring-[#0061ad] focus:border-[#0061ad] transition text-sm sm:text-base"
             required
             disabled={status === 'submitting'}
           />
         </div>
         
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1 break-keep">
+          <label htmlFor="phone" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 break-keep">
             연락처
           </label>
           <input
@@ -220,13 +218,13 @@ const ContactForm = () => {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#0061ad] focus:border-[#0061ad] transition"
+            className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-md focus:ring-[#0061ad] focus:border-[#0061ad] transition text-sm sm:text-base"
             disabled={status === 'submitting'}
           />
         </div>
 
         <div>
-          <label htmlFor="organization" className="block text-sm font-medium text-gray-700 mb-1 break-keep">
+          <label htmlFor="organization" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 break-keep">
             소속 (회사명/단체명)
           </label>
           <input
@@ -236,13 +234,13 @@ const ContactForm = () => {
             value={formData.organization}
             onChange={handleChange}
             placeholder="예: (주)마스터피스, 서울대학교, 개인사업자 등"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#0061ad] focus:border-[#0061ad] transition"
+            className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-md focus:ring-[#0061ad] focus:border-[#0061ad] transition text-sm sm:text-base placeholder:text-xs sm:placeholder:text-sm"
             disabled={status === 'submitting'}
           />
         </div>
         
         <div>
-          <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1 break-keep">
+          <label htmlFor="service" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 break-keep">
             관심 서비스 <span className="text-red-500">*</span>
           </label>
           <select
@@ -250,7 +248,7 @@ const ContactForm = () => {
             name="service"
             value={formData.service}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-[#0061ad] focus:border-[#0061ad] transition bg-white"
+            className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-md focus:ring-[#0061ad] focus:border-[#0061ad] transition bg-white text-sm sm:text-base"
             required
             disabled={status === 'submitting'}
           >
@@ -263,10 +261,10 @@ const ContactForm = () => {
           </select>
         </div>
 
-        {/* 특강&워크숍 선택 시 세부 선택 옵션 */}
+        {/* 특강&워크숍 선택 시 세부 선택 옵션 - 모바일 최적화 */}
         {formData.service === '전문 프로그램' && (
-          <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-            <label htmlFor="workshop" className="block text-sm font-medium text-gray-700 mb-3 break-keep">
+          <div className="bg-gray-50 p-3 sm:p-4 rounded-lg border border-gray-200">
+            <label htmlFor="workshop" className="block text-xs sm:text-sm font-medium text-gray-700 mb-2 sm:mb-3 break-keep">
               희망하는 특강/워크숍 <span className="text-red-500">*</span>
             </label>
             <select
@@ -274,7 +272,7 @@ const ContactForm = () => {
               name="workshop"
               value={formData.workshop}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-[#0061ad] focus:border-[#0061ad] transition bg-white"
+              className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-md focus:ring-[#0061ad] focus:border-[#0061ad] transition bg-white text-sm sm:text-base"
               required
               disabled={status === 'submitting'}
             >
@@ -289,7 +287,7 @@ const ContactForm = () => {
         )}
         
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1 break-keep">
+          <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 break-keep">
             문의 내용 <span className="text-red-500">*</span>
           </label>
           <textarea
@@ -299,7 +297,7 @@ const ContactForm = () => {
             onChange={handleChange}
             rows={5}
             placeholder="구체적인 요구사항이나 궁금한 점을 자유롭게 작성해주세요."
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#0061ad] focus:border-[#0061ad] transition"
+            className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-md focus:ring-[#0061ad] focus:border-[#0061ad] transition text-sm sm:text-base placeholder:text-xs sm:placeholder:text-sm"
             required
             disabled={status === 'submitting'}
           ></textarea>
@@ -309,7 +307,7 @@ const ContactForm = () => {
           <button
             type="submit"
             disabled={status === 'submitting' || !formData.service}
-            className={`w-full py-3 px-6 rounded-md font-semibold transition flex items-center justify-center break-keep ${
+            className={`w-full py-2.5 sm:py-3 px-4 sm:px-6 rounded-md font-semibold transition flex items-center justify-center break-keep text-sm sm:text-base ${
               status === 'submitting' || !formData.service
                 ? 'bg-gray-400 text-white cursor-not-allowed'
                 : 'bg-[#0061ad] text-white hover:bg-[#004d8a]'
@@ -317,7 +315,7 @@ const ContactForm = () => {
           >
             {status === 'submitting' ? (
               <>
-                <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 sm:h-5 sm:w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
@@ -325,7 +323,7 @@ const ContactForm = () => {
               </>
             ) : (
               <>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 transform rotate-90" viewBox="0 0 20 20" fill="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 mr-2 transform rotate-90" viewBox="0 0 20 20" fill="currentColor">
                   <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
                 </svg>
                 문의하기

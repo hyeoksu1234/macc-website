@@ -290,12 +290,10 @@ export default function WorkshopsPage() {
   const filteredWorkshops = workshops.filter(workshop => workshop.category === activeCategory);
   const activeTab = categories.find(cat => cat.id === activeCategory);
 
-
-
   return (
     <div className="flex flex-col">
-      {/* 히어로 섹션 */}
-      <section className="relative w-full h-[30vh] md:h-[40vh] flex items-center bg-gradient-to-r from-[#0061ad] to-[#004d8a] overflow-hidden">
+      {/* 히어로 섹션 - 모바일 최적화 */}
+      <section className="relative w-full h-[25vh] sm:h-[30vh] md:h-[40vh] flex items-center bg-gradient-to-r from-[#0061ad] to-[#004d8a] overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="container mx-auto px-4 z-10 text-white">
           <motion.div
@@ -303,25 +301,25 @@ export default function WorkshopsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-3xl md:text-5xl font-bold mb-6 break-keep">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-6 break-keep">
               전문 프로그램
             </h1>
-            <p className="text-lg md:text-2xl mb-8 max-w-4xl break-keep opacity-90">
+            <p className="text-base sm:text-lg md:text-2xl max-w-4xl break-keep opacity-90">
               Masterpiece Alliance의 전문 교육 프로그램으로 개인과 조직의 성장을 지원합니다
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* 서비스 네비게이션 */}
-      <section className="py-12 bg-gray-50">
+      {/* 서비스 네비게이션 - 모바일 최적화 */}
+      <section className="py-8 sm:py-12 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-6">
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
-                className={`px-6 py-3 border-2 rounded-full font-medium transition-all duration-300 shadow-sm hover:shadow-md ${
+                className={`px-4 sm:px-6 py-2 sm:py-3 border-2 rounded-full text-sm sm:text-base font-medium transition-all duration-300 shadow-sm hover:shadow-md ${
                   activeCategory === category.id
                     ? 'bg-white border-[#0061ad] text-[#0061ad]'
                     : 'bg-white border-gray-200 text-gray-700 hover:border-[#0061ad] hover:text-[#0061ad]'
@@ -334,8 +332,8 @@ export default function WorkshopsPage() {
         </div>
       </section>
 
-      {/* 워크숍 상세 목록 */}
-      <section className="py-16 bg-gray-50">
+      {/* 워크숍 상세 목록 - 모바일 최적화 */}
+      <section className="py-12 sm:py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <AnimatePresence mode="wait">
             <motion.div
@@ -345,21 +343,21 @@ export default function WorkshopsPage() {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
             >
-              {/* 카테고리 헤더 */}
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              {/* 카테고리 헤더 - 모바일 최적화 */}
+              <div className="text-center mb-10 sm:mb-16">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
                   {activeTab?.name}
                 </h2>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
                   {activeTab?.description}을 위한 전문 프로그램들입니다.
                 </p>
-                <div className="mt-4 text-sm text-gray-500">
+                <div className="mt-3 sm:mt-4 text-sm text-gray-500">
                   총 {filteredWorkshops.length}개의 프로그램
                 </div>
               </div>
 
-              {/* 워크숍 상세 리스트 */}
-              <div className="space-y-24">
+              {/* 워크숍 상세 리스트 - 모바일 최적화 */}
+              <div className="space-y-16 sm:space-y-24">
                 {filteredWorkshops.map((workshop, index) => (
                   <motion.div
                     key={workshop.id}
@@ -368,11 +366,11 @@ export default function WorkshopsPage() {
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     className={`flex flex-col ${
                       index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                    } items-center gap-12 lg:gap-16`}
+                    } items-center gap-8 sm:gap-12 lg:gap-16`}
                   >
-                    {/* 이미지 영역 */}
+                    {/* 이미지 영역 - 모바일 최적화 */}
                     <div className="w-full lg:w-1/2">
-                      <div className="relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-lg">
+                      <div className="relative h-[250px] sm:h-[300px] md:h-[400px] rounded-xl sm:rounded-2xl overflow-hidden shadow-lg">
                         <Image
                           src={workshop.image}
                           alt={workshop.title}
@@ -385,36 +383,36 @@ export default function WorkshopsPage() {
                       </div>
                     </div>
 
-                    {/* 콘텐츠 영역 */}
-                    <div className="w-full lg:w-1/2 space-y-6">
-                                             {/* 헤더 */}
+                    {/* 콘텐츠 영역 - 모바일 최적화 */}
+                    <div className="w-full lg:w-1/2 space-y-4 sm:space-y-6">
+                       {/* 헤더 */}
                        <div>
-                         <div className="mb-3">
-                           <span className="text-sm font-medium text-[#0061ad] bg-blue-50 px-3 py-1 rounded-full">
+                         <div className="mb-2 sm:mb-3">
+                           <span className="text-xs sm:text-sm font-medium text-[#0061ad] bg-blue-50 px-2 sm:px-3 py-1 rounded-full">
                              {workshop.subtitle}
                            </span>
                          </div>
-                        <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 break-keep">
+                        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3 sm:mb-4 break-keep">
                           {workshop.title}
                         </h3>
-                        <p className="text-lg md:text-xl text-[#0061ad] font-semibold mb-4 break-keep">
+                        <p className="text-base sm:text-lg md:text-xl text-[#0061ad] font-semibold mb-3 sm:mb-4 break-keep">
                           {workshop.highlightText}
                         </p>
                       </div>
 
-                      {/* 설명 */}
-                      <p className="text-gray-700 leading-relaxed text-base md:text-lg break-keep">
+                      {/* 설명 - 모바일 최적화 */}
+                      <p className="text-gray-700 leading-relaxed text-sm sm:text-base md:text-lg break-keep">
                         {workshop.description}
                       </p>
 
-                      {/* 주요 내용 */}
+                      {/* 주요 내용 - 모바일 최적화 */}
                       <div>
-                        <h4 className="text-xl font-bold text-gray-900 mb-4">주요 내용</h4>
-                        <div className="space-y-3">
+                        <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">주요 내용</h4>
+                        <div className="space-y-2 sm:space-y-3">
                           {workshop.features.map((feature, featureIndex) => (
                             <div key={featureIndex} className="flex items-start">
                               <svg
-                                className="w-6 h-6 text-[#0061ad] mr-3 mt-0.5 flex-shrink-0"
+                                className="w-5 h-5 sm:w-6 sm:h-6 text-[#0061ad] mr-2 sm:mr-3 mt-0.5 flex-shrink-0"
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
                               >
@@ -424,22 +422,22 @@ export default function WorkshopsPage() {
                                   clipRule="evenodd"
                                 />
                               </svg>
-                              <span className="text-gray-700 break-keep font-medium">{feature}</span>
+                              <span className="text-sm sm:text-base text-gray-700 break-keep font-medium">{feature}</span>
                             </div>
                           ))}
                         </div>
                       </div>
 
-                                             {/* 문의 버튼 */}
+                       {/* 문의 버튼 - 모바일 최적화 */}
                        <div>
                          <Link
                            href="/contact"
-                           className="inline-flex items-center bg-[#0061ad] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#004d8a] transition-colors duration-300"
+                           className="inline-flex items-center bg-[#0061ad] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold text-sm sm:text-base hover:bg-[#004d8a] transition-colors duration-300"
                          >
                            프로그램 문의
                            <svg
                              xmlns="http://www.w3.org/2000/svg"
-                             className="h-5 w-5 ml-2"
+                             className="h-4 w-4 sm:h-5 sm:w-5 ml-2"
                              fill="none"
                              viewBox="0 0 24 24"
                              stroke="currentColor"
@@ -457,23 +455,23 @@ export default function WorkshopsPage() {
         </div>
       </section>
 
-      {/* CTA 섹션 */}
-      <section className="py-16 bg-[#0061ad] text-white">
+      {/* CTA 섹션 - 모바일 최적화 */}
+      <section className="py-12 sm:py-16 bg-[#0061ad] text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 break-keep">
             맞춤형 교육 프로그램을 원하시나요?
           </h2>
-          <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-3xl mx-auto break-keep">
             귀하의 조직에 특화된 맞춤형 워크숍과 특강을 기획해드립니다.
           </p>
           <Link 
             href="/contact" 
-            className="inline-flex items-center bg-white text-[#0061ad] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors duration-300"
+            className="inline-flex items-center bg-white text-[#0061ad] px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-gray-100 transition-colors duration-300"
           >
             맞춤 교육 문의
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 ml-2"
+              className="h-4 w-4 sm:h-5 sm:w-5 ml-2"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
