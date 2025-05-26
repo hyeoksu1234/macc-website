@@ -79,8 +79,8 @@ export function validateContactForm(data: ContactFormData): { isValid: boolean; 
   }
   
   // 메시지 검증
-  if (!data.message || !isValidLength(data.message, 5, 1000)) {
-    errors.message = '문의 내용을 5자 이상 입력해주세요 (최대 1000자)';
+  if (!data.message || !isValidLength(data.message, 3, 1000)) {
+    errors.message = '문의 내용을 3자 이상 입력해주세요 (최대 1000자)';
   }
   
   return {

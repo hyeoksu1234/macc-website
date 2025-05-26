@@ -307,7 +307,7 @@ const ContactForm = () => {
             value={formData.message}
             onChange={handleChange}
             rows={5}
-            placeholder="구체적인 요구사항이나 궁금한 점을 자유롭게 작성해주세요. (최소 5자 이상)"
+            placeholder="구체적인 요구사항이나 궁금한 점을 자유롭게 작성해주세요. (최소 3자 이상)"
             className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-md focus:ring-[#0061ad] focus:border-[#0061ad] transition text-sm sm:text-base placeholder:text-xs sm:placeholder:text-sm"
             required
             disabled={status === 'submitting'}

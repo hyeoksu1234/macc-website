@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { validateContactForm, sanitizeFormData, escapeHtml, ContactFormData } from '@/lib/sanitize';
 import { rateLimit } from '@/lib/rate-limit';
+import nodemailer from 'nodemailer';
 
 // 속도 제한 설정
 const limiter = rateLimit({
@@ -73,32 +74,31 @@ export async function POST(req: Request) {
       'expert-self-branding': '전문가의 자기브랜딩'
     };
 
-    // 실제 이메일 전송 로직을 임시로 비활성화하고 콘솔에만 로그 남김
-    console.log('문의 접수됨:', {
-      name: escapeHtml(name),
-      email: escapeHtml(email),
-      phone: phone ? escapeHtml(phone) : '미입력',
-      organization: organization ? escapeHtml(organization) : '미입력',
-      service: escapeHtml(service),
-      workshop: workshop ? workshopLabels[workshop] || escapeHtml(workshop) : '해당없음',
-      message: escapeHtml(message)
-    });
-
-    /* 
-    // 트랜스포터 설정 (실제 사용 시 환경 변수로 관리)
+    // 이메일 전송 설정
     const emailUser = process.env.EMAIL_USER;
     const emailPass = process.env.EMAIL_PASS;
     const adminEmail = process.env.ADMIN_EMAIL || 'leeyoon@ma-cc.co.kr';
     
+    // 환경 변수가 없는 경우 콘솔에만 로그 남기고 성공 응답
     if (!emailUser || !emailPass) {
-      console.error('이메일 서비스 자격 증명이 구성되지 않았습니다.');
+      console.log('이메일 설정이 없어 콘솔에만 로그를 남깁니다.');
+      console.log('문의 접수됨:', {
+        name: escapeHtml(name),
+        email: escapeHtml(email),
+        phone: phone ? escapeHtml(phone) : '미입력',
+        organization: organization ? escapeHtml(organization) : '미입력',
+        service: escapeHtml(service),
+        workshop: workshop ? workshopLabels[workshop] || escapeHtml(workshop) : '해당없음',
+        message: escapeHtml(message)
+      });
+      
       return NextResponse.json(
-        { error: '서버 구성 오류가 발생했습니다. 관리자에게 문의하세요.' },
-        { status: 500 }
+        { message: '문의가 성공적으로 접수되었습니다. 곧 답변 드리겠습니다.' },
+        { status: 200 }
       );
     }
     
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       service: 'gmail', // 또는 다른 이메일 서비스
       auth: {
         user: emailUser,
@@ -194,6 +194,8 @@ export async function POST(req: Request) {
       
       // 이메일 전송 - 고객 자동 회신
       await transporter.sendMail(customerMailOptions);
+      
+      console.log('이메일 전송 성공:', adminEmail);
     } catch (error) {
       console.error('이메일 전송 오류:', error);
       return NextResponse.json(
@@ -201,7 +203,6 @@ export async function POST(req: Request) {
         { status: 500 }
       );
     }
-    */
 
     return NextResponse.json(
       { message: '문의가 성공적으로 접수되었습니다. 곧 답변 드리겠습니다.' },
