@@ -79,6 +79,16 @@ export async function POST(req: Request) {
     const emailPass = process.env.EMAIL_PASS;
     const adminEmail = process.env.ADMIN_EMAIL || 'leeyoon@ma-cc.co.kr';
     
+    // 환경 변수 디버깅
+    console.log('환경 변수 확인:', {
+      hasEmailUser: !!emailUser,
+      hasEmailPass: !!emailPass,
+      emailUserValue: emailUser ? `${emailUser.substring(0, 3)}***` : 'undefined',
+      emailPassLength: emailPass?.length || 0,
+      adminEmail: adminEmail,
+      nodeEnv: process.env.NODE_ENV
+    });
+    
     // 환경 변수가 없는 경우 콘솔에만 로그 남기고 성공 응답
     if (!emailUser || !emailPass) {
       console.log('이메일 설정이 없어 콘솔에만 로그를 남깁니다.');
@@ -190,14 +200,35 @@ export async function POST(req: Request) {
 
     try {
       // 이메일 전송 - 관리자
+      console.log('관리자 메일 전송 시도:', adminEmail);
       await transporter.sendMail(adminMailOptions);
+      console.log('관리자 메일 전송 성공');
       
       // 이메일 전송 - 고객 자동 회신
+      console.log('고객 자동 회신 메일 전송 시도:', email);
       await transporter.sendMail(customerMailOptions);
+      console.log('고객 자동 회신 메일 전송 성공');
       
-      console.log('이메일 전송 성공:', adminEmail);
+      console.log('모든 이메일 전송 성공:', adminEmail);
     } catch (error) {
-      console.error('이메일 전송 오류:', error);
+      console.error('이메일 전송 상세 오류:', {
+        message: (error as any)?.message,
+        code: (error as any)?.code,
+        command: (error as any)?.command,
+        response: (error as any)?.response,
+        responseCode: (error as any)?.responseCode,
+        fullError: error
+      });
+      
+      // 환경 변수 확인 로그
+      console.log('환경 변수 상태:', {
+        hasEmailUser: !!emailUser,
+        hasEmailPass: !!emailPass,
+        adminEmail: adminEmail,
+        emailUserLength: emailUser?.length || 0,
+        emailPassLength: emailPass?.length || 0
+      });
+      
       return NextResponse.json(
         { error: '메일 전송 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.' },
         { status: 500 }
