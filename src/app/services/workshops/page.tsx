@@ -385,7 +385,7 @@ export default function WorkshopsPage() {
 
                     {/* 콘텐츠 영역 - 모바일 최적화 */}
                     <div className="w-full lg:w-1/2 space-y-4 sm:space-y-6">
-                       {/* 헤더 */}
+                                             {/* 헤더 */}
                        <div>
                          <div className="mb-2 sm:mb-3">
                            <span className="text-xs sm:text-sm font-medium text-[#0061ad] bg-blue-50 px-2 sm:px-3 py-1 rounded-full">

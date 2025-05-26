@@ -16,25 +16,30 @@
       "static/chunks/main-app.js",
       "static/chunks/app/about/page.js"
     ],
-    "/services/workshops/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/services/workshops/page.js"
-    ],
     "/services/main-biz/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/services/main-biz/page.js"
+    ],
+    "/blog/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/blog/page.js"
     ],
     "/contact/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/contact/page.js"
     ],
-    "/blog/page": [
+    "/location/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/blog/page.js"
+      "static/chunks/app/location/page.js"
+    ],
+    "/services/workshops/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/services/workshops/page.js"
     ]
   }
 }

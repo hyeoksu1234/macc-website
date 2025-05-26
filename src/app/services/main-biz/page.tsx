@@ -36,8 +36,8 @@ export default function MainBizPage() {
         "은퇴 후 필요한 실질적 재무 계획 수립",
         "신중년 커리어 개발을 위한 다양한 지원 정책의 이해"
       ],
-      targetAudience: "두 번째 전성기를 준비하고자 하는 분들",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1470&auto=format&fit=crop"
+      targetAudience: "은퇴를 앞두거나 제2의 커리어를 준비하는 분 또는 관련 단체",
+      image: "/images/man.png"
     },
     {
       id: 2,
@@ -172,7 +172,7 @@ export default function MainBizPage() {
             <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-6 sm:gap-8 lg:gap-16`}>
               {/* 이미지 - 모바일 최적화 */}
               <div className="w-full lg:w-1/2">
-                <div className="relative h-[250px] sm:h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-lg">
+                <div className="relative h-[350px] sm:h-[400px] md:h-[500px] lg:h-[550px] rounded-lg overflow-hidden shadow-lg">
                   <Image
                     src={service.image}
                     alt={service.title}

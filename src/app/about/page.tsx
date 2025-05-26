@@ -7,7 +7,20 @@ import Link from "next/link";
 export default function AboutPage() {
   // 카드 플립 상태 관리
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
+  const [isMobile, setIsMobile] = useState(false);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // 모바일 감지
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024); // lg 브레이크포인트 기준
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // 임시 핵심 가치 데이터
   const coreValues = [
@@ -45,7 +58,7 @@ export default function AboutPage() {
       role: "브랜드 성장 전략 주치의 & 자기다움 브랜딩 코칭",
       bio: "자기다움으로 탁월하게 행복한 이윤을 창출하도록 돕습니다.",
       credentials: [
-        "국제코치연맹 PCC 코치 & 한국코치협회 KPC 코치",
+        "국제코치연맹 PCC 코치 & 한국코치협회 KPC 프로 코치",
         "미국 갤럽 인증 강점코치",
         "ICCS_CCCS 1급",
         "MBTI 글로벌 전문가 & STRONG 직업흥미 전문코치",
@@ -61,10 +74,9 @@ export default function AboutPage() {
       role: "차별화 브랜딩 전문가 / 강점 기반 브랜딩 코치",
       bio: "강점과 자기다움을 통해 브랜드워커로 거듭나도록 돕습니다.",
       credentials: [
-        "한국코치협회 KPC 프로 코치(Korea Professional Coach)",
+        "한국코치협회 KPC 프로 코치",
         "미국 갤럽 인증 강점코치",
-        "MBTI 글로벌 전문가",
-        "STRONG 직업흥미 전문가",
+        "MBTI 글로벌 전문가 & STRONG 직업흥미 전문가",
         "리더십 멘탈 케어 전문가(마음 챙김 프로그램)",
         "Global Executive Leadership Mirror ® (GELM) Certified 전문가"
       ],
@@ -88,8 +100,10 @@ export default function AboutPage() {
     }
   ];
 
-  // 스크롤 이벤트 핸들러
+  // 스크롤 이벤트 핸들러 (모바일에서만 동작)
   useEffect(() => {
+    if (!isMobile) return;
+
     const handleScroll = () => {
       cardRefs.current.forEach((cardRef, index) => {
         if (cardRef) {
@@ -114,7 +128,18 @@ export default function AboutPage() {
     handleScroll(); // 초기 실행
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [flippedCards, teamMembers]);
+  }, [flippedCards, teamMembers, isMobile]);
+
+  // 카드 클릭/호버 핸들러 (웹에서만 동작)
+  const handleCardInteraction = (memberId: number) => {
+    if (isMobile) return;
+    
+    setFlippedCards(prev => 
+      prev.includes(memberId) 
+        ? prev.filter(id => id !== memberId)
+        : [...prev, memberId]
+    );
+  };
 
   return (
     <div className="flex flex-col">
@@ -266,8 +291,11 @@ export default function AboutPage() {
                   <div 
                     key={member.id} 
                     ref={(el) => { cardRefs.current[index] = el; }}
-                    className="group relative h-[400px] sm:h-[450px] lg:h-[500px]" 
+                    className={`group relative h-[400px] sm:h-[450px] lg:h-[500px] ${!isMobile ? 'cursor-pointer' : ''}`}
                     style={{ perspective: '1000px' }}
+                    onClick={() => handleCardInteraction(member.id)}
+                    onMouseEnter={() => !isMobile && handleCardInteraction(member.id)}
+                    onMouseLeave={() => !isMobile && handleCardInteraction(member.id)}
                   >
                     <div 
                       className="relative w-full h-full transition-transform duration-700"
@@ -297,9 +325,9 @@ export default function AboutPage() {
                         <p className="text-sm sm:text-base opacity-90 break-keep">
                           {member.role}
                         </p>
-                      </div>
+                  </div>
                     </div>
-
+                    
                     {/* 뒷면 - 정보 */}
                     <div 
                       className="absolute inset-0 w-full h-full bg-white rounded-xl shadow-lg p-2 sm:p-3 flex flex-col justify-between"
@@ -316,20 +344,22 @@ export default function AboutPage() {
                           {member.role}
                         </p>
                         <p className="text-xs text-gray-600 leading-relaxed break-keep">
-                          {member.bio}
-                        </p>
+                      {member.bio}
+                    </p>
                       </div>
 
                       <div className="ml-2 mb-4">
                         <h4 className="text-sm sm:text-base font-semibold text-[#0061ad] uppercase tracking-wide mb-3">자격증 및 전문분야</h4>
-                        <ul className="space-y-1">
-                          {member.credentials.map((credential, credIndex) => (
-                            <li key={credIndex} className="text-sm sm:text-base text-gray-600 flex items-start break-keep">
-                              <span className="text-[#0061ad] mr-2 flex-shrink-0 text-sm sm:text-base">•</span>
-                              <span className="leading-relaxed">{credential}</span>
-                            </li>
-                          ))}
-                        </ul>
+                        <div className="h-[200px] sm:h-[220px] overflow-y-auto">
+                          <ul className="space-y-1">
+                            {member.credentials.map((credential, credIndex) => (
+                              <li key={credIndex} className="text-sm sm:text-base text-gray-600 flex items-start break-keep">
+                                <span className="text-[#0061ad] mr-2 flex-shrink-0 text-sm sm:text-base">•</span>
+                                <span className="leading-relaxed">{credential}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
                     </div>
                   </div>

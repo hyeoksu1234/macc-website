@@ -1,7 +1,8 @@
 {
-  "/contact/page": "app/contact/page.js",
-  "/services/workshops/page": "app/services/workshops/page.js",
-  "/about/page": "app/about/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/services/main-biz/page": "app/services/main-biz/page.js",
-  "/blog/page": "app/blog/page.js"
+  "/location/page": "app/location/page.js",
+  "/services/workshops/page": "app/services/workshops/page.js",
+  "/page": "app/page.js",
+  "/about/page": "app/about/page.js"
 }

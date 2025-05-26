@@ -46,7 +46,7 @@ export default function ContactPage() {
                     "맞춤형 솔루션",
                     "전문가 코칭", 
                     "전문 프로그램",
-                    "지속적인 지원"
+                    "지속적인 자문"
                   ].map((feature, index) => (
                     <div key={index} className="flex items-center">
                       <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-br from-[#6366f1] to-[#8b5cf6] rounded-full flex items-center justify-center mr-2 sm:mr-3 flex-shrink-0 shadow-md">
