@@ -287,7 +287,7 @@ const ContactForm = () => {
               required
               disabled={status === 'submitting'}
             >
-              <option value="">워크숍을 선택해주세요</option>
+                              <option value="">주제를 선택해주세요</option>
               {workshopOptions.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
