@@ -58,7 +58,7 @@ export default function AboutPage() {
       role: "브랜드 성장 전략 주치의 & 자기다움 브랜딩 코칭",
       bio: "자기다움으로 탁월하게 행복한 이윤을 창출하도록 돕습니다.",
       credentials: [
-        "국제코치연맹 PCC 코치 & 한국코치협회 KPC 프로 코치",
+        "국제코치연맹 PCC 코치 & 한국코치협회 KPC 코치",
         "미국 갤럽 인증 강점코치",
         "ICCS_CCCS 1급",
         "MBTI 글로벌 전문가 & STRONG 직업흥미 전문코치",

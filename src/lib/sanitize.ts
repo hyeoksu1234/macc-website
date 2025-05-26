@@ -73,14 +73,14 @@ export function validateContactForm(data: ContactFormData): { isValid: boolean; 
     errors.service = '서비스 유형을 선택해주세요';
   }
   
-  // 특강&워크숍 선택 시 워크숍 세부 선택 검증
-  if (data.service === '전문 프로그램' && !data.workshop) {
-    errors.workshop = '특강/워크숍 유형을 선택해주세요';
+  // 전문 프로그램 선택 시 워크숍 세부 선택 검증
+  if (data.service === '전문 프로그램' && (!data.workshop || data.workshop.trim() === '')) {
+    errors.workshop = '희망하는 주제를 선택해주세요';
   }
   
   // 메시지 검증
-  if (!data.message || !isValidLength(data.message, 10, 1000)) {
-    errors.message = '문의 내용을 10자 이상 입력해주세요 (최대 1000자)';
+  if (!data.message || !isValidLength(data.message, 5, 1000)) {
+    errors.message = '문의 내용을 5자 이상 입력해주세요 (최대 1000자)';
   }
   
   return {

@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { validateContactForm, sanitizeFormData, escapeHtml, ContactFormData } from '@/lib/sanitize';
 import { rateLimit } from '@/lib/rate-limit';
-// import nodemailer from 'nodemailer';
 
 // 속도 제한 설정
 const limiter = rateLimit({
@@ -43,27 +42,35 @@ export async function POST(req: Request) {
     const { isValid, errors } = validateContactForm(sanitizedData);
 
     if (!isValid) {
+      console.log('유효성 검사 실패:', errors);
+      console.log('받은 데이터:', sanitizedData);
       return NextResponse.json(
-        { error: '입력 데이터가 유효하지 않습니다.', details: errors },
+        { 
+          error: '입력 데이터가 유효하지 않습니다.', 
+          details: errors,
+          receivedData: sanitizedData 
+        },
         { status: 400 }
       );
     }
 
     const { name, email, phone, organization, service, workshop, message } = sanitizedData;
 
-    // 워크숍 옵션 매핑
+    // 워크숍 옵션 매핑 (ContactForm의 옵션과 일치)
     const workshopLabels: Record<string, string> = {
-      'leadership-workshop': '리더십 개발 워크숍',
-      'communication-workshop': '효과적인 커뮤니케이션 워크숍',
-      'team-building-workshop': '팀 빌딩 워크숍',
-      'career-planning-workshop': '커리어 플래닝 워크숍',
-      'change-management-workshop': '변화 관리 워크숍',
-      'innovation-thinking-workshop': '혁신적 사고 워크숍',
-      'stress-management-workshop': '스트레스 관리 워크숍',
-      'personal-branding-workshop': '개인 브랜딩 워크숍',
-      'presentation-skills-workshop': '프레젠테이션 스킬 워크숍',
-      'negotiation-skills-workshop': '협상 스킬 워크숍',
-      'custom-workshop': '맞춤형 워크숍 (기타)'
+      'first-book-writing': '내 인생 첫 책 쓰기',
+      'gallup-strengths': '갤럽 강점 프로그램',
+      'interest-based-career': '흥미 기반 커리어 프로그램',
+      'via-values-in-action': 'VIA(Values in Action)',
+      'career-reading-club': '커리어 전문 독서 모임',
+      'mental-management-skills': '멘탈 관리의 기술',
+      'one-on-one-conversation': '1 on 1 대화 스킬',
+      'listening-skills': '입으로 하는 경청',
+      'secret-of-questions': '질문의 비밀',
+      'connection-conversation': '연결의 대화법',
+      'feedback-skills': '피드백',
+      'business-mbti': '비즈니스 MBTI',
+      'expert-self-branding': '전문가의 자기브랜딩'
     };
 
     // 실제 이메일 전송 로직을 임시로 비활성화하고 콘솔에만 로그 남김

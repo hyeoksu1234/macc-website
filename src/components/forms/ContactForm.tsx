@@ -102,6 +102,8 @@ const ContactForm = () => {
     setStatus('submitting');
     setErrorMessage('');
 
+    console.log('전송할 데이터:', formData);
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -114,7 +116,16 @@ const ContactForm = () => {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || '문의 접수 중 오류가 발생했습니다.');
+        console.error('API 오류:', data);
+        let errorMessage = data.error || '문의 접수 중 오류가 발생했습니다.';
+        
+        // 유효성 검사 오류인 경우 상세 정보 표시
+        if (data.details) {
+          const errorDetails = Object.values(data.details).join(', ');
+          errorMessage += ` (${errorDetails})`;
+        }
+        
+        throw new Error(errorMessage);
       }
 
       // 성공 처리
@@ -265,7 +276,7 @@ const ContactForm = () => {
         {formData.service === '전문 프로그램' && (
           <div className="bg-gray-50 p-3 sm:p-4 rounded-lg border border-gray-200">
             <label htmlFor="workshop" className="block text-xs sm:text-sm font-medium text-gray-700 mb-2 sm:mb-3 break-keep">
-              희망하는 특강/워크숍 <span className="text-red-500">*</span>
+              희망하는 주제 <span className="text-red-500">*</span>
             </label>
             <select
               id="workshop"
@@ -296,7 +307,7 @@ const ContactForm = () => {
             value={formData.message}
             onChange={handleChange}
             rows={5}
-            placeholder="구체적인 요구사항이나 궁금한 점을 자유롭게 작성해주세요."
+            placeholder="구체적인 요구사항이나 궁금한 점을 자유롭게 작성해주세요. (최소 5자 이상)"
             className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-md focus:ring-[#0061ad] focus:border-[#0061ad] transition text-sm sm:text-base placeholder:text-xs sm:placeholder:text-sm"
             required
             disabled={status === 'submitting'}
