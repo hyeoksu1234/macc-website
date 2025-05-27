@@ -55,7 +55,7 @@ export default function AboutPage() {
     {
       id: 1,
       name: "이윤",
-      role: "브랜드 성장 전략 주치의 & 자기다움 브랜딩 코칭",
+      role: "브랜드 성장 전략 주치의 & 자기다움 브랜딩 코치",
       bio: "자기다움으로 탁월하게 행복한 이윤을 창출하도록 돕습니다.",
       credentials: [
         "국제코치연맹 PCC 코치 & 한국코치협회 KPC 코치",
@@ -231,7 +231,7 @@ export default function AboutPage() {
                 </div>
 
                 <p className="text-lg sm:text-xl md:text-2xl font-medium text-[#0061ad] text-center py-6 sm:py-8 break-keep">
-                  함께 만드는 지속가능한 발전을 위해 노력하는 Masterpiece Alliance는 여러분의 참 좋은 파트너입니다.
+                  함께 만드는 지속가능한 발전을 위해 노력하는 Masterpiece Alliance는<br />여러분의 참 좋은 파트너입니다.
                 </p>
               </div>
             </div>
