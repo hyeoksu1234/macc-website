@@ -1,8 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase/client';
 
-// 보안 토큰 - 실제 환경에서는 강력한 토큰으로 변경 필요
-const DEBUG_SECRET_TOKEN = process.env.DEBUG_SECRET_TOKEN || 'debug-token-secret';
+// 운영 환경에서는 디버그 API 비활성화
+if (process.env.NODE_ENV === 'production' && !process.env.ENABLE_DEBUG_API) {
+  throw new Error('Debug API is disabled in production');
+}
+
+// 보안 토큰 - 반드시 환경 변수로 설정해야 함
+const DEBUG_SECRET_TOKEN = process.env.DEBUG_SECRET_TOKEN;
+
+// 토큰이 설정되지 않은 경우 에러
+if (!DEBUG_SECRET_TOKEN) {
+  throw new Error('DEBUG_SECRET_TOKEN environment variable is required');
+}
 
 export async function GET(request: NextRequest) {
   try {
@@ -11,7 +21,7 @@ export async function GET(request: NextRequest) {
     
     // 권한 확인
     if (token !== DEBUG_SECRET_TOKEN) {
-      console.warn('[DebugAPI] 인증 실패. 잘못된 토큰');
+      console.warn('[DebugAPI] 인증 실패. IP:', request.headers.get('x-forwarded-for') || 'unknown');
       return NextResponse.json(
         { 
           success: false, 
@@ -21,11 +31,10 @@ export async function GET(request: NextRequest) {
       );
     }
     
-    // 환경 정보 수집
+    // 환경 정보 수집 (민감한 정보 제외)
     const environmentInfo = {
       timestamp: new Date().toISOString(),
       nextJs: {
-        version: process.env.NEXT_PUBLIC_VERSION || '정보 없음',
         environment: process.env.NODE_ENV || '정보 없음',
         vercelEnv: process.env.VERCEL_ENV || '정보 없음',
       },
@@ -55,8 +64,8 @@ export async function GET(request: NextRequest) {
       
       if (postsError || categoriesError) {
         dbStatus.message = '데이터베이스 쿼리 오류';
-        if (postsError) dbStatus.message += `: ${postsError.message}`;
-        if (categoriesError) dbStatus.message += `, ${categoriesError.message}`;
+        // 상세한 오류 정보는 로그에만 기록
+        console.error('[DebugAPI] DB Error:', { postsError, categoriesError });
       } else {
         dbStatus.connected = true;
         dbStatus.message = '데이터베이스 연결 성공';
@@ -64,7 +73,8 @@ export async function GET(request: NextRequest) {
         dbStatus.categoriesCount = categoriesCount || 0;
       }
     } catch (error) {
-      dbStatus.message = `데이터베이스 연결 실패: ${(error as Error).message}`;
+      dbStatus.message = '데이터베이스 연결 실패';
+      console.error('[DebugAPI] DB Connection Error:', error);
     }
     
     return NextResponse.json({
@@ -77,8 +87,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(
       { 
         success: false,
-        message: '디버그 정보 생성 중 오류 발생',
-        error: (error as Error).message
+        message: '디버그 정보 생성 중 오류 발생'
       },
       { status: 500 }
     );

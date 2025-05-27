@@ -1,5 +1,5 @@
 {
-  "/api/contact/route": "app/api/contact/route.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/contact/page": "app/contact/page.js"
+  "/about/page": "app/about/page.js",
+  "/location/page": "app/location/page.js"
 }

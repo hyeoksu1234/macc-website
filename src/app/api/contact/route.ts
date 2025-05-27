@@ -9,6 +9,21 @@ const limiter = rateLimit({
   uniqueTokenPerInterval: 10 // 최대 요청 수
 });
 
+// CORS 헤더 설정
+const corsHeaders = {
+  'Access-Control-Allow-Origin': process.env.ALLOWED_ORIGINS || '*',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+  'Access-Control-Max-Age': '86400',
+};
+
+export async function OPTIONS(req: Request) {
+  return new Response(null, {
+    status: 200,
+    headers: corsHeaders,
+  });
+}
+
 export async function POST(req: Request) {
   try {
     // 속도 제한 확인
@@ -21,7 +36,8 @@ export async function POST(req: Request) {
           status: 429,
           headers: {
             'Retry-After': remaining.reset.toString(),
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            ...corsHeaders
           }
         }
       );
@@ -34,7 +50,10 @@ export async function POST(req: Request) {
     } catch {
       return NextResponse.json(
         { error: '유효하지 않은 요청 형식입니다.' },
-        { status: 400 }
+        { 
+          status: 400,
+          headers: corsHeaders
+        }
       );
     }
 
@@ -43,15 +62,17 @@ export async function POST(req: Request) {
     const { isValid, errors } = validateContactForm(sanitizedData);
 
     if (!isValid) {
-      console.log('유효성 검사 실패:', errors);
-      console.log('받은 데이터:', sanitizedData);
+      // 민감한 데이터 로깅 제거 - 오류만 로그
+      console.log('[Contact] 유효성 검사 실패');
       return NextResponse.json(
         { 
           error: '입력 데이터가 유효하지 않습니다.', 
-          details: errors,
-          receivedData: sanitizedData 
+          details: errors
         },
-        { status: 400 }
+        { 
+          status: 400,
+          headers: corsHeaders
+        }
       );
     }
 
@@ -79,32 +100,21 @@ export async function POST(req: Request) {
     const emailPass = process.env.EMAIL_PASS;
     const adminEmail = process.env.ADMIN_EMAIL || 'leeyoon@ma-cc.co.kr';
     
-    // 환경 변수 디버깅
-    console.log('환경 변수 확인:', {
-      hasEmailUser: !!emailUser,
-      hasEmailPass: !!emailPass,
-      emailUserValue: emailUser ? `${emailUser.substring(0, 3)}***` : 'undefined',
-      emailPassLength: emailPass?.length || 0,
-      adminEmail: adminEmail,
-      nodeEnv: process.env.NODE_ENV
-    });
+    // 환경 변수 확인 (민감한 정보 제거)
+    const hasEmailConfig = !!(emailUser && emailPass);
+    console.log('[Contact] 이메일 설정 상태:', hasEmailConfig ? '설정됨' : '설정안됨');
     
     // 환경 변수가 없는 경우 콘솔에만 로그 남기고 성공 응답
-    if (!emailUser || !emailPass) {
-      console.log('이메일 설정이 없어 콘솔에만 로그를 남깁니다.');
-      console.log('문의 접수됨:', {
-        name: escapeHtml(name),
-        email: escapeHtml(email),
-        phone: phone ? escapeHtml(phone) : '미입력',
-        organization: organization ? escapeHtml(organization) : '미입력',
-        service: escapeHtml(service),
-        workshop: workshop ? workshopLabels[workshop] || escapeHtml(workshop) : '해당없음',
-        message: escapeHtml(message)
-      });
+    if (!hasEmailConfig) {
+      console.log('[Contact] 이메일 설정이 없어 콘솔에만 로그를 남깁니다.');
+      console.log('[Contact] 문의 접수 - 이름:', escapeHtml(name), '서비스:', escapeHtml(service));
       
       return NextResponse.json(
         { message: '문의가 성공적으로 접수되었습니다. 곧 답변 드리겠습니다.' },
-        { status: 200 }
+        { 
+          status: 200,
+          headers: corsHeaders
+        }
       );
     }
     

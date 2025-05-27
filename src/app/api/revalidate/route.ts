@@ -1,9 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { revalidatePath, revalidateTag } from 'next/cache';
 
-// 보안 토큰 - 실제 환경에서는 환경 변수로 이동해야 함
-// 추후 환경 변수 REVALIDATE_SECRET_TOKEN으로 교체
-const SECRET_TOKEN = process.env.REVALIDATE_SECRET_TOKEN || 'your-secret-token';
+// 보안 토큰 - 반드시 환경 변수로 설정해야 함
+const SECRET_TOKEN = process.env.REVALIDATE_SECRET_TOKEN;
+
+// 토큰이 설정되지 않은 경우 에러
+if (!SECRET_TOKEN) {
+  throw new Error('REVALIDATE_SECRET_TOKEN environment variable is required');
+}
 
 export async function GET(request: NextRequest) {
   try {
@@ -17,7 +21,7 @@ export async function GET(request: NextRequest) {
 
     // 토큰 검증
     if (token !== SECRET_TOKEN) {
-      console.warn('[Revalidate] 인증 실패. 잘못된 토큰:', { path, tag });
+      console.warn('[Revalidate] 인증 실패. IP:', request.headers.get('x-forwarded-for') || 'unknown');
       return NextResponse.json(
         { 
           revalidated: false, 
@@ -48,8 +52,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(
       { 
         revalidated: false,
-        message: '재검증 처리 중 오류 발생',
-        error: (error as Error).message
+        message: '재검증 처리 중 오류 발생'
       },
       { status: 500 }
     );
