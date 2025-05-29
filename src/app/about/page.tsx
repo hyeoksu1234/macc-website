@@ -184,8 +184,7 @@ export default function AboutPage() {
 
                 <p className="break-keep">
                   그래서 Masterpiece Alliance의 모든 시작은 고객의 마음을 듣는 <strong className="text-[#0061ad]">'경청'</strong>에서 시작됩니다. 
-                  Masterpiece Alliance가 <strong className="text-[#0061ad]">코칭과 컨설팅이 가진 장점을 융합하여</strong> 
-                  만들어 가는 특별한 MA만의 솔루션에 고객을 초대합니다.
+                  Masterpiece Alliance가 <strong className="text-[#0061ad]">코칭과 컨설팅이 가진 장점을 융합하여</strong> 만들어 가는 특별한 MA만의 솔루션에 고객을 초대합니다.
                 </p>
 
                 {/* 첫 번째 이미지 - 모바일 최적화 */}
