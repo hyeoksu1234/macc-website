@@ -8,24 +8,57 @@ export const revalidate = 0;
 
 export default async function BlogPage() {
   try {
-    // 디버깅을 위한 환경 정보 로깅
-    console.log('[BlogPage] 환경 변수 확인:', {
-      NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL ? '설정됨' : '설정안됨',
-      NODE_ENV: process.env.NODE_ENV,
-      VERCEL_ENV: process.env.VERCEL_ENV || '설정안됨'
+    // Supabase 환경 변수 확인
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    const hasSupabaseConfig = supabaseUrl && supabaseKey && 
+      supabaseUrl !== 'https://example.supabase.co' && 
+      supabaseKey !== 'dummy-key-for-build';
+    
+    let posts = null;
+    let error = null;
+    
+    console.log('[BlogPage] 환경 변수 상태:', {
+      hasUrl: !!supabaseUrl,
+      hasKey: !!supabaseKey,
+      urlValue: supabaseUrl?.substring(0, 20) + '...' || 'undefined',
+      keyValue: supabaseKey?.substring(0, 10) + '...' || 'undefined',
+      hasValidConfig: hasSupabaseConfig
     });
-
-    // 게시된 블로그 포스트 가져오기
-    console.log('[BlogPage] 블로그 포스트 조회 시작');
-    const { data: posts, error } = await supabase
-      .from('posts')
-      .select('*, categories(name, slug)')
-      .eq('status', 'published')
-      .order('published_at', { ascending: false });
+    
+    if (hasSupabaseConfig) {
+      try {
+        // 환경 변수가 있을 때만 Supabase 쿼리 실행
+        console.log('[BlogPage] 실제 Supabase 쿼리 실행');
+        const result = await supabase
+          .from('posts')
+          .select('*, categories(name, slug)')
+          .eq('status', 'published')
+          .order('published_at', { ascending: false });
+        
+        posts = result.data;
+        error = result.error;
+      } catch (queryError) {
+        console.error('[BlogPage] Supabase 쿼리 실행 중 오류:', queryError);
+        posts = [];
+        error = null; // 에러를 null로 처리하여 정상적인 "등록된 글이 없습니다" 화면 표시
+      }
+    } else {
+      // 환경 변수가 없거나 더미 값이면 빈 배열 사용
+      console.log('[BlogPage] Supabase 미설정, 빈 데이터 사용');
+      posts = [];
+      error = null;
+    }
 
     // 데이터베이스 오류 발생 시
     if (error) {
-      console.error('[BlogPage] 블로그 포스트 조회 중 오류:', error);
+      console.error('[BlogPage] 블로그 포스트 조회 중 오류:', {
+        message: error.message,
+        details: error.details,
+        hint: error.hint,
+        code: error.code,
+        error
+      });
       // 오류 메시지와 함께 사용자 친화적인 화면 표시
       return (
         <div className="flex flex-col">
@@ -144,7 +177,11 @@ export default async function BlogPage() {
       </div>
     );
   } catch (error) {
-    console.error('[BlogPage] 블로그 페이지 렌더링 중 예상치 못한 오류:', error);
+    console.error('[BlogPage] 블로그 페이지 렌더링 중 예상치 못한 오류:', {
+      message: error instanceof Error ? error.message : String(error),
+      stack: error instanceof Error ? error.stack : undefined,
+      error
+    });
     
     // 예상치 못한 오류 발생 시 사용자에게 표시할 UI
     return (
