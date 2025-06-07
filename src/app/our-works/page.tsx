@@ -157,7 +157,7 @@ export default function OurWorksPage() {
           함께한 주요 기업/기관
           </h2>
           <p className="text-sm sm:text-base text-gray-600 max-w-4xl mx-auto leading-relaxed break-keep">
-          우리는 대기업부터 스타트업, 공공기관, 교육기관까지 다양한 분야의 비전을 가진 조직과 구성원의 성장과 발전에 참여하였습니다.  
+          우리는 대기업부터 스타트업, 공공기관, 교육기관까지 다양한 분야의 비전을 가진 조직과 구성원의 성장과 발전에 참여하였습니다. <br />  
           각 조직의 고유한 문화와 목표에 맞춘 맞춤형 코칭, 컨설팅, 인큐베이팅 솔루션을 제공하여, 조직과 구성원이 잠재력을 발견하여 미래를 향해 가도록 돕고 있습니다.
           </p>
         </div>
