@@ -114,7 +114,7 @@ export default async function BlogPage() {
               칼럼 & 활동
             </h1>
             <p className="text-base sm:text-lg md:text-2xl max-w-3xl break-keep">
-              Masterpiece Alliance의 인사이트와 생각을 공유합니다
+            Masterpiece Alliance의 인사이트와 생각, 활동을 공유합니다.
             </p>
           </div>
         </section>
