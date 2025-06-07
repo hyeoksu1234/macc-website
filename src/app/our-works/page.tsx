@@ -1,6 +1,6 @@
 import React from "react";
-import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { Marquee } from "@/components/ui/marquee";
 
 export default function OurWorksPage() {
   // SVG 파일과 겹치는 로고를 정리한 로고 목록
@@ -25,6 +25,7 @@ export default function OurWorksPage() {
     { name: "신한생명", src: "/images/logo_work/신한생명.png" },
     { name: "신한은행", src: "/images/logo_work/신한은행.png" },
     { name: "하나금융그룹", src: "/images/logo_work/하나금융그룹.png" },
+    { name: "기아자동차", src: "/images/logo_work/KIA.png" },
     
     // 두 번째 줄 - 금융, 제약, IT 및 서비스 기업
     { name: "하나은행", src: "/images/logo_work/하나은행.png" },
@@ -57,9 +58,9 @@ export default function OurWorksPage() {
     { name: "대상정보기술", src: "/images/logo_work/대상정보기술.png" },
     { name: "한국패션산업연구원", src: "/images/logo_work/한국패션산업연구원.png" },
     { name: "꿈비로고", src: "/images/logo_work/꿈비로고.png" },
-    { name: "코이카", src: "/images/logo_work/코이카.png" },
     { name: "엘지아트센터", src: "/images/logo_work/엘지아트센터.png" },
     { name: "엘지재단", src: "/images/logo_work/엘지재단.png" },
+    { name: "이롬", src: "/images/logo_work/이롬.png" },
 
     
     // 네 번째 줄 - 교육기관 (대학교 집중 배치) - 24개 모든 교육기관
@@ -91,10 +92,10 @@ export default function OurWorksPage() {
     // 다섯 번째 줄 - 공공기관 (지방자치단체 및 기타 공공기관)
     { name: "경기도청", src: "/images/logo_work/경기도청.png" },
     { name: "마포구", src: "/images/logo_work/마포구.png" },
+    { name: "경상북도청", src: "/images/logo_work/경상북도청.png" },
     { name: "강동구청", src: "/images/logo_work/강동구청.png" },
     { name: "광진구청", src: "/images/logo_work/광진구청.png" },
     { name: "포천시", src: "/images/logo_work/포천시.png" },
-    { name: "포천시청", src: "/images/logo_work/포천시청.png" },
     { name: "한국양성평등원", src: "/images/logo_work/한국양성평등원.png" },
     { name: "한국생산성본부", src: "/images/logo_work/한국생산성본부.png" },
     { name: "한국표준협회", src: "/images/logo_work/한국표준협회.png" },
@@ -106,6 +107,7 @@ export default function OurWorksPage() {
     { name: "인천테크노파크", src: "/images/logo_work/인천테크노파크.png" },
     { name: "부산경제진흥원", src: "/images/logo_work/부산경제진흥원.png" },
     { name: "성남산업진흥원", src: "/images/logo_work/성남산업진흥원.png" },
+    { name: "코이카", src: "/images/logo_work/코이카.png" },
     { name: "경찰청", src: "/images/logo_work/경찰청.png" },
     { name: "관세청", src: "/images/logo_work/관세청.png" },
     { name: "행정안전부", src: "/images/logo_work/행정안전부.png" },
@@ -117,7 +119,7 @@ export default function OurWorksPage() {
     { name: "해양환경공단", src: "/images/logo_work/해양환경공단.png" },
     { name: "대한지방행정공제회", src: "/images/logo_work/대한지방행정공제회.png" },
     { name: "한국토지신탁", src: "/images/logo_work/한국토지신탁.png" },
-    { name: "경상북도청", src: "/images/logo_work/경상북도청.png" },
+    
     
     // 여섯 번째 줄 - 진흥원 및 문화기관, 취업지원, 기타
     { name: "경기도일자리재단", src: "/images/logo_work/경기도일자리재단.png" },
@@ -133,8 +135,29 @@ export default function OurWorksPage() {
     { name: "마포청년나루", src: "/images/logo_work/마포청년나루.png" },
     { name: "하이서울기업협회", src: "/images/logo_work/하이서울기업협회.png" },
     { name: "인천유유기지", src: "/images/logo_work/인천유유기지.png" },
-  
   ];
+
+  // Renders a block of logos.
+  const LogoBlock = ({ logos }: { logos: { name: string; src: string }[] }) => (
+    <>
+      {logos.map((logo) => (
+        <div
+          key={logo.name}
+          className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
+        >
+          <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
+            <Image
+              src={logo.src}
+              alt={`${logo.name} 로고`}
+              width={160}
+              height={80}
+              className="max-w-full max-h-full w-auto h-auto object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+            />
+          </div>
+        </div>
+      ))}
+    </>
+  );
 
   return (
     <div className="flex flex-col">
@@ -167,245 +190,27 @@ export default function OurWorksPage() {
       <section className="py-8 sm:py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="mb-8 sm:mb-12 text-center">
-            {/* <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 break-keep">
-              함께한 주요 기업들
-            </h3> */}
           </div>
           
-          <div className="space-y-8 sm:space-y-10">
-            {/* 첫 번째 줄 - 좌에서 우로 (대기업 및 주요 기업) */}
-            <div className="w-full overflow-hidden">
-              <div className="flex animate-marquee hover:[animation-play-state:paused]">
-                {clientLogos.slice(0, 20).map((logo, index) => (
-                  <div
-                    key={`row1-first-${index}`}
-                    className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
-                  >
-                    <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
-                      <Image
-                        src={logo.src}
-                        alt={`${logo.name} 로고`}
-                        width={160}
-                        height={80}
-                        className="max-w-full max-h-full w-auto h-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                      />
-                    </div>
-                  </div>
-                ))}
-                {/* 연속성을 위한 복제 */}
-                {clientLogos.slice(0, 20).map((logo, index) => (
-                  <div
-                    key={`row1-second-${index}`}
-                    className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
-                  >
-                    <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
-                      <Image
-                        src={logo.src}
-                        alt={`${logo.name} 로고`}
-                        width={160}
-                        height={80}
-                        className="max-w-full max-h-full w-auto h-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* 두 번째 줄 - 우에서 좌로 (금융, 제약, IT 및 서비스 기업) */}
-            <div className="w-full overflow-hidden">
-              <div className="flex animate-marquee-reverse hover:[animation-play-state:paused]">
-                {clientLogos.slice(20, 40).map((logo, index) => (
-                  <div
-                    key={`row2-first-${index}`}
-                    className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
-                  >
-                    <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
-                      <Image
-                        src={logo.src}
-                        alt={`${logo.name} 로고`}
-                        width={160}
-                        height={80}
-                        className="max-w-full max-h-full w-auto h-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                      />
-                    </div>
-                  </div>
-                ))}
-                {/* 연속성을 위한 복제 */}
-                {clientLogos.slice(20, 40).map((logo, index) => (
-                  <div
-                    key={`row2-second-${index}`}
-                    className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
-                  >
-                    <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
-                      <Image
-                        src={logo.src}
-                        alt={`${logo.name} 로고`}
-                        width={160}
-                        height={80}
-                        className="max-w-full max-h-full w-auto h-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* 세 번째 줄 - 좌에서 우로 (서비스 유통업 및 공공기관) */}
-            <div className="w-full overflow-hidden">
-              <div className="flex animate-marquee-slow hover:[animation-play-state:paused]">
-                {clientLogos.slice(40, 63).map((logo, index) => (
-                  <div
-                    key={`row3-first-${index}`}
-                    className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
-                  >
-                    <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
-                      <Image
-                        src={logo.src}
-                        alt={`${logo.name} 로고`}
-                        width={160}
-                        height={80}
-                        className="max-w-full max-h-full w-auto h-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                      />
-                    </div>
-                  </div>
-                ))}
-                {/* 연속성을 위한 복제 */}
-                {clientLogos.slice(40, 63).map((logo, index) => (
-                  <div
-                    key={`row3-second-${index}`}
-                    className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
-                  >
-                    <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
-                      <Image
-                        src={logo.src}
-                        alt={`${logo.name} 로고`}
-                        width={160}
-                        height={80}
-                        className="max-w-full max-h-full w-auto h-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* 네 번째 줄 - 우에서 좌로 (교육기관 전용 - 꿈의학교까지) */}
-            <div className="w-full overflow-hidden">
-              <div className="flex animate-marquee-reverse hover:[animation-play-state:paused]">
-                {clientLogos.slice(63, 74).map((logo, index) => (
-                  <div
-                    key={`row4-first-${index}`}
-                    className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
-                  >
-                    <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
-                      <Image
-                        src={logo.src}
-                        alt={`${logo.name} 로고`}
-                        width={160}
-                        height={80}
-                        className="max-w-full max-h-full w-auto h-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                      />
-                    </div>
-                  </div>
-                ))}
-                {/* 연속성을 위한 복제 */}
-                {clientLogos.slice(63, 74).map((logo, index) => (
-                  <div
-                    key={`row4-second-${index}`}
-                    className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
-                  >
-                    <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
-                      <Image
-                        src={logo.src}
-                        alt={`${logo.name} 로고`}
-                        width={160}
-                        height={80}
-                        className="max-w-full max-h-full w-auto h-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* 다섯 번째 줄 - 좌에서 우로 (공공기관) */}
-            <div className="w-full overflow-hidden">
-              <div className="flex animate-marquee hover:[animation-play-state:paused]">
-                {clientLogos.slice(74, 96).map((logo, index) => (
-                  <div
-                    key={`row5-first-${index}`}
-                    className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
-                  >
-                    <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
-                      <Image
-                        src={logo.src}
-                        alt={`${logo.name} 로고`}
-                        width={160}
-                        height={80}
-                        className="max-w-full max-h-full w-auto h-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                      />
-                    </div>
-                  </div>
-                ))}
-                {/* 연속성을 위한 복제 */}
-                {clientLogos.slice(74, 96).map((logo, index) => (
-                  <div
-                    key={`row5-second-${index}`}
-                    className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
-                  >
-                    <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
-                      <Image
-                        src={logo.src}
-                        alt={`${logo.name} 로고`}
-                        width={160}
-                        height={80}
-                        className="max-w-full max-h-full w-auto h-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* 여섯 번째 줄 - 우에서 좌로 (진흥원, 문화기관 및 기타) */}
-            <div className="w-full overflow-hidden">
-              <div className="flex animate-marquee-reverse hover:[animation-play-state:paused]">
-                {clientLogos.slice(96).map((logo, index) => (
-                  <div
-                    key={`row6-first-${index}`}
-                    className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
-                  >
-                    <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
-                      <Image
-                        src={logo.src}
-                        alt={`${logo.name} 로고`}
-                        width={160}
-                        height={80}
-                        className="max-w-full max-h-full w-auto h-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                      />
-                    </div>
-                  </div>
-                ))}
-                {/* 연속성을 위한 복제 */}
-                {clientLogos.slice(96).map((logo, index) => (
-                  <div
-                    key={`row6-second-${index}`}
-                    className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
-                  >
-                    <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
-                      <Image
-                        src={logo.src}
-                        alt={`${logo.name} 로고`}
-                        width={160}
-                        height={80}
-                        className="max-w-full max-h-full w-auto h-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+          <div className="space-y-8 sm:space-y-10 group">
+            <Marquee animationClassName="animate-marquee-row1">
+              <LogoBlock logos={clientLogos.slice(0, 20)} />
+            </Marquee>
+            <Marquee animationClassName="animate-marquee-row2">
+              <LogoBlock logos={clientLogos.slice(20, 40)} />
+            </Marquee>
+            <Marquee animationClassName="animate-marquee-row3">
+              <LogoBlock logos={clientLogos.slice(40, 51)} />
+            </Marquee>
+            <Marquee animationClassName="animate-marquee-row4">
+              <LogoBlock logos={clientLogos.slice(51, 75)} />
+            </Marquee>
+            <Marquee animationClassName="animate-marquee-row5">
+              <LogoBlock logos={clientLogos.slice(75, 104)} />
+            </Marquee>
+            <Marquee animationClassName="animate-marquee-row6">
+              <LogoBlock logos={clientLogos.slice(104)} />
+            </Marquee>
           </div>
         </div>
       </section>

@@ -1,55 +1,45 @@
+'use client';
+
 import * as React from "react"
 import { cn } from "@/lib/utils"
 
-interface MarqueeProps extends React.HTMLAttributes<HTMLDivElement> {
+interface MarqueeProps {
   children: React.ReactNode
-  pauseOnHover?: boolean
-  direction?: "left" | "right"
-  speed?: number
+  className?: string
+  animationClassName?: string
+  // Note: pauseOnHover, direction, and speed props are now controlled by CSS classes directly
 }
 
-export function Marquee({
-  children,
-  pauseOnHover = false,
-  direction = "left",
-  speed = 30,
-  className,
-  ...props
-}: MarqueeProps) {
+export function Marquee({ children, className, animationClassName }: MarqueeProps) {
+  const marqueeRef = React.useRef<HTMLDivElement>(null);
+  const [width, setWidth] = React.useState(0);
+
+  React.useEffect(() => {
+    if (marqueeRef.current) {
+      // Measure the width of a single block of children
+      setWidth(marqueeRef.current.scrollWidth);
+    }
+  }, [children]);
+
   return (
     <div 
       className={cn(
-        "w-full overflow-hidden z-10",
+        "w-full overflow-hidden",
         className
       )} 
-      {...props}
+      style={
+        {
+          '--marquee-width': `${width}px`,
+        } as React.CSSProperties
+      }
     >
-      <div className="relative flex max-w-full overflow-hidden py-5">
-        <div 
-          className={cn(
-            "flex w-max items-center",
-            direction === "left" ? "animate-marquee" : "animate-marquee-reverse",
-            pauseOnHover && "hover:[animation-play-state:paused]"
-          )}
-          style={{ 
-            "--marquee-duration": `${speed}s`,
-            animationDuration: `${speed}s`
-          } as React.CSSProperties}
-        >
+      <div className={cn('flex w-max py-5', animationClassName)}>
+        {/* This is the block we measure */}
+        <div ref={marqueeRef} className="flex flex-shrink-0 items-center">
           {children}
         </div>
-        <div 
-          className={cn(
-            "flex w-max items-center",
-            direction === "left" ? "animate-marquee" : "animate-marquee-reverse",
-            pauseOnHover && "hover:[animation-play-state:paused]"
-          )}
-          style={{ 
-            "--marquee-duration": `${speed}s`,
-            animationDuration: `${speed}s`
-          } as React.CSSProperties}
-          aria-hidden="true"
-        >
+        {/* This is the duplicate block for seamless looping */}
+        <div className="flex flex-shrink-0 items-center" aria-hidden="true">
           {children}
         </div>
       </div>
