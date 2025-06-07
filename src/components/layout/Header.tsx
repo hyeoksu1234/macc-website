@@ -162,7 +162,7 @@ const Header = () => {
             Our Works
           </Link>
           <Link href="/blog" className="text-gray-700 hover:text-[#0061ad] font-medium transition-colors duration-300 break-keep">
-            칼럼
+            칼럼 & 활동
           </Link>
           <Link href="/contact" className="text-gray-700 hover:text-[#0061ad] font-medium transition-colors duration-300 break-keep">
             상담 신청
@@ -268,7 +268,7 @@ const Header = () => {
               Our Works
             </Link>
             <Link href="/blog" onClick={closeMenu} className="text-gray-700 hover:text-[#0061ad] font-medium py-3 text-base transition-colors duration-300 break-keep border-b border-gray-100">
-              칼럼
+              칼럼 & 활동
             </Link>
             <Link href="/contact" onClick={closeMenu} className="text-gray-700 hover:text-[#0061ad] font-medium py-3 text-base transition-colors duration-300 break-keep border-b border-gray-100">
               상담 신청

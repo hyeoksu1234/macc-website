@@ -63,12 +63,12 @@ export default async function BlogPage() {
       return (
         <div className="flex flex-col">
           {/* 히어로 섹션 */}
-          <section className="relative w-full h-[30vh] md:h-[40vh] flex items-center bg-gradient-to-r from-[#0061ad] to-[#004d8a]">
+          <section className="relative w-full h-[25vh] sm:h-[30vh] md:h-[40vh] flex items-center bg-gradient-to-r from-[#0061ad] to-[#004d8a]">
             <div className="container mx-auto px-4 z-10 text-white">
-              <h1 className="text-3xl md:text-5xl font-bold mb-4 break-keep">
-                칼럼
+              <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-4 break-keep">
+                칼럼 & 활동
               </h1>
-              <p className="text-lg md:text-2xl mb-8 max-w-3xl break-keep">
+              <p className="text-base sm:text-lg md:text-2xl max-w-3xl break-keep">
                 Masterpiece Alliance의 인사이트와 전문 지식을 공유합니다
               </p>
             </div>
@@ -108,12 +108,12 @@ export default async function BlogPage() {
     return (
       <div className="flex flex-col">
         {/* 히어로 섹션 */}
-        <section className="relative w-full h-[30vh] md:h-[40vh] flex items-center bg-gradient-to-r from-[#0061ad] to-[#004d8a]">
+        <section className="relative w-full h-[25vh] sm:h-[30vh] md:h-[40vh] flex items-center bg-gradient-to-r from-[#0061ad] to-[#004d8a]">
           <div className="container mx-auto px-4 z-10 text-white">
-            <h1 className="text-3xl md:text-5xl font-bold mb-4 break-keep">
-              칼럼
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-4 break-keep">
+              칼럼 & 활동
             </h1>
-            <p className="text-lg md:text-2xl mb-8 max-w-3xl break-keep">
+            <p className="text-base sm:text-lg md:text-2xl max-w-3xl break-keep">
               Masterpiece Alliance의 인사이트와 생각을 공유합니다
             </p>
           </div>
@@ -187,12 +187,12 @@ export default async function BlogPage() {
     return (
       <div className="flex flex-col">
         {/* 히어로 섹션 */}
-        <section className="relative w-full h-[30vh] md:h-[40vh] flex items-center bg-gradient-to-r from-[#0061ad] to-[#004d8a]">
+        <section className="relative w-full h-[25vh] sm:h-[30vh] md:h-[40vh] flex items-center bg-gradient-to-r from-[#0061ad] to-[#004d8a]">
           <div className="container mx-auto px-4 z-10 text-white">
-            <h1 className="text-3xl md:text-5xl font-bold mb-4 break-keep">
-              칼럼
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-4 break-keep">
+              칼럼 & 활동
             </h1>
-            <p className="text-lg md:text-2xl mb-8 max-w-3xl break-keep">
+            <p className="text-base sm:text-lg md:text-2xl max-w-3xl break-keep">
               Masterpiece Alliance의 인사이트와 전문 지식을 공유합니다
             </p>
           </div>

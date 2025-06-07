@@ -42,7 +42,7 @@ const Footer = () => {
               </div>
               <div>
                 <Link href="/columns" className="text-sm sm:text-base text-gray-400 hover:text-[#f9ce00] transition-colors duration-300 block break-keep">
-                  칼럼
+                  칼럼 & 활동
                 </Link>
               </div>
               <div>

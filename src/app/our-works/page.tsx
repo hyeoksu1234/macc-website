@@ -18,7 +18,6 @@ export default function OurWorksPage() {
     { name: "DB하이텍", src: "/images/logo_work/DB하이텍.png" },
     { name: "TCC스틸", src: "/images/logo_work/TCC스틸.png" },
     { name: "GS건설", src: "/images/logo_work/GS건설.png" },
-    // { name: "만도", src: "/images/logo_work/만도.png" },
     { name: "HL만도", src: "/images/logo_work/HL만도.png" },
     { name: "금고타이어", src: "/images/logo_work/금호타이어.png" },
     { name: "ASM", src: "/images/logo_work/ASM.png" },
@@ -43,7 +42,6 @@ export default function OurWorksPage() {
     { name: "워터스코리아", src: "/images/logo_work/워터스코리아.png" },
     { name: "SKM&S", src: "/images/logo_work/skmnslogo.png" },
     { name: "아가방앤컴퍼니", src: "/images/logo_work/아가방앤컴퍼니.png" },
-    // { name: "아가방", src: "/images/logo_work/아가방.png" },
     { name: "맥도날드", src: "/images/logo_work/mcdonalds.png" },
     { name: "말본골프", src: "/images/logo_work/말본골프.png" },
     { name: "스위트벙커디자인", src: "/images/logo_work/스위트벙커디자인.png" },
@@ -59,10 +57,9 @@ export default function OurWorksPage() {
     { name: "대상정보기술", src: "/images/logo_work/대상정보기술.png" },
     { name: "한국패션산업연구원", src: "/images/logo_work/한국패션산업연구원.png" },
     { name: "꿈비로고", src: "/images/logo_work/꿈비로고.png" },
-    // { name: "경찰청", src: "/images/logo_work/경찰청.png" },
-    // { name: "관세청", src: "/images/logo_work/관세청.png" },
-    // { name: "행정안전부", src: "/images/logo_work/행정안전부.png" },
     { name: "코이카", src: "/images/logo_work/코이카.png" },
+    { name: "엘지아트센터", src: "/images/logo_work/엘지아트센터.png" },
+    { name: "엘지재단", src: "/images/logo_work/엘지재단.png" },
 
     
     // 네 번째 줄 - 교육기관 (대학교 집중 배치) - 24개 모든 교육기관
@@ -129,9 +126,6 @@ export default function OurWorksPage() {
     { name: "화성시복지재단", src: "/images/logo_work/화성시복지재단.png" },
     { name: "국립극장", src: "/images/logo_work/국립극장.png" },
     { name: "서울문화재단", src: "/images/logo_work/서울문화재단.png" },
-    { name: "LG아트센터", src: "/images/logo_work/LG아트센터.png" },
-    { name: "엘지아트센터", src: "/images/logo_work/엘지아트센터.png" },
-    { name: "엘지재단", src: "/images/logo_work/엘지재단.png" },
     { name: "서울시일자리까페", src: "/images/logo_work/서울시일자리까페.png" },
     { name: "종로여성인력개발원", src: "/images/logo_work/종로여성인력개발원.png" },
     { name: "제주더큰내일센터", src: "/images/logo_work/제주더큰내일센터.png" },
@@ -178,7 +172,7 @@ export default function OurWorksPage() {
             </h3> */}
           </div>
           
-          <div className="space-y-4 sm:space-y-6">
+          <div className="space-y-8 sm:space-y-10">
             {/* 첫 번째 줄 - 좌에서 우로 (대기업 및 주요 기업) */}
             <div className="w-full overflow-hidden">
               <div className="flex animate-marquee hover:[animation-play-state:paused]">
@@ -260,7 +254,7 @@ export default function OurWorksPage() {
             {/* 세 번째 줄 - 좌에서 우로 (서비스 유통업 및 공공기관) */}
             <div className="w-full overflow-hidden">
               <div className="flex animate-marquee-slow hover:[animation-play-state:paused]">
-                {clientLogos.slice(40, 60).map((logo, index) => (
+                {clientLogos.slice(40, 63).map((logo, index) => (
                   <div
                     key={`row3-first-${index}`}
                     className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
@@ -277,7 +271,7 @@ export default function OurWorksPage() {
                   </div>
                 ))}
                 {/* 연속성을 위한 복제 */}
-                {clientLogos.slice(40, 60).map((logo, index) => (
+                {clientLogos.slice(40, 63).map((logo, index) => (
                   <div
                     key={`row3-second-${index}`}
                     className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
@@ -296,10 +290,10 @@ export default function OurWorksPage() {
               </div>
             </div>
 
-            {/* 네 번째 줄 - 우에서 좌로 (교육기관 전용 - 24개) */}
+            {/* 네 번째 줄 - 우에서 좌로 (교육기관 전용 - 꿈의학교까지) */}
             <div className="w-full overflow-hidden">
               <div className="flex animate-marquee-reverse hover:[animation-play-state:paused]">
-                {clientLogos.slice(60, 84).map((logo, index) => (
+                {clientLogos.slice(63, 74).map((logo, index) => (
                   <div
                     key={`row4-first-${index}`}
                     className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
@@ -316,7 +310,7 @@ export default function OurWorksPage() {
                   </div>
                 ))}
                 {/* 연속성을 위한 복제 */}
-                {clientLogos.slice(60, 84).map((logo, index) => (
+                {clientLogos.slice(63, 74).map((logo, index) => (
                   <div
                     key={`row4-second-${index}`}
                     className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
@@ -338,7 +332,7 @@ export default function OurWorksPage() {
             {/* 다섯 번째 줄 - 좌에서 우로 (공공기관) */}
             <div className="w-full overflow-hidden">
               <div className="flex animate-marquee hover:[animation-play-state:paused]">
-                {clientLogos.slice(84, 104).map((logo, index) => (
+                {clientLogos.slice(74, 96).map((logo, index) => (
                   <div
                     key={`row5-first-${index}`}
                     className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
@@ -355,7 +349,7 @@ export default function OurWorksPage() {
                   </div>
                 ))}
                 {/* 연속성을 위한 복제 */}
-                {clientLogos.slice(84, 104).map((logo, index) => (
+                {clientLogos.slice(74, 96).map((logo, index) => (
                   <div
                     key={`row5-second-${index}`}
                     className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
@@ -377,7 +371,7 @@ export default function OurWorksPage() {
             {/* 여섯 번째 줄 - 우에서 좌로 (진흥원, 문화기관 및 기타) */}
             <div className="w-full overflow-hidden">
               <div className="flex animate-marquee-reverse hover:[animation-play-state:paused]">
-                {clientLogos.slice(104).map((logo, index) => (
+                {clientLogos.slice(96).map((logo, index) => (
                   <div
                     key={`row6-first-${index}`}
                     className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
@@ -394,7 +388,7 @@ export default function OurWorksPage() {
                   </div>
                 ))}
                 {/* 연속성을 위한 복제 */}
-                {clientLogos.slice(104).map((logo, index) => (
+                {clientLogos.slice(96).map((logo, index) => (
                   <div
                     key={`row6-second-${index}`}
                     className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
