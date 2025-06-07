@@ -18,7 +18,7 @@ export default function OurWorksPage() {
     { name: "DB하이텍", src: "/images/logo_work/DB하이텍.png" },
     { name: "TCC스틸", src: "/images/logo_work/TCC스틸.png" },
     { name: "GS건설", src: "/images/logo_work/GS건설.png" },
-    { name: "만도", src: "/images/logo_work/만도.png" },
+    // { name: "만도", src: "/images/logo_work/만도.png" },
     { name: "HL만도", src: "/images/logo_work/HL만도.png" },
     { name: "금고타이어", src: "/images/logo_work/금호타이어.png" },
     { name: "ASM", src: "/images/logo_work/ASM.png" },
@@ -58,19 +58,12 @@ export default function OurWorksPage() {
     { name: "대상웰라이프", src: "/images/logo_work/대상웰라이프.png" },
     { name: "대상정보기술", src: "/images/logo_work/대상정보기술.png" },
     { name: "한국패션산업연구원", src: "/images/logo_work/한국패션산업연구원.png" },
-    { name: "경찰청", src: "/images/logo_work/경찰청.png" },
-    { name: "관세청", src: "/images/logo_work/관세청.png" },
-    { name: "행정안전부", src: "/images/logo_work/행정안전부.png" },
+    { name: "꿈비로고", src: "/images/logo_work/꿈비로고.png" },
+    // { name: "경찰청", src: "/images/logo_work/경찰청.png" },
+    // { name: "관세청", src: "/images/logo_work/관세청.png" },
+    // { name: "행정안전부", src: "/images/logo_work/행정안전부.png" },
     { name: "코이카", src: "/images/logo_work/코이카.png" },
-    { name: "우정사업본부", src: "/images/logo_work/우정사업본부.png" },
-    { name: "한국전기안전공사", src: "/images/logo_work/한국전기안전공사.png" },
-    { name: "한국남부발전", src: "/images/logo_work/한국남부발전.png" },
-    { name: "한국중부발전", src: "/images/logo_work/한국중부발전.png" },
-    { name: "수도권매립지관리공사", src: "/images/logo_work/수도권매립지관리공사.png" },
-    { name: "해양환경공단", src: "/images/logo_work/해양환경공단.png" },
-    { name: "대한지방행정공제회", src: "/images/logo_work/대한지방행정공제회.png" },
-    { name: "한국토지신탁", src: "/images/logo_work/한국토지신탁.png" },
-    { name: "경상북도청", src: "/images/logo_work/경상북도청.png" },
+
     
     // 네 번째 줄 - 교육기관 (대학교 집중 배치) - 24개 모든 교육기관
     { name: "서울대학교", src: "/images/logo_work/서울대학교.png" },
@@ -116,6 +109,18 @@ export default function OurWorksPage() {
     { name: "인천테크노파크", src: "/images/logo_work/인천테크노파크.png" },
     { name: "부산경제진흥원", src: "/images/logo_work/부산경제진흥원.png" },
     { name: "성남산업진흥원", src: "/images/logo_work/성남산업진흥원.png" },
+    { name: "경찰청", src: "/images/logo_work/경찰청.png" },
+    { name: "관세청", src: "/images/logo_work/관세청.png" },
+    { name: "행정안전부", src: "/images/logo_work/행정안전부.png" },
+    { name: "우정사업본부", src: "/images/logo_work/우정사업본부.png" },
+    { name: "한국전기안전공사", src: "/images/logo_work/한국전기안전공사.png" },
+    { name: "한국남부발전", src: "/images/logo_work/한국남부발전.png" },
+    { name: "한국중부발전", src: "/images/logo_work/한국중부발전.png" },
+    { name: "수도권매립지관리공사", src: "/images/logo_work/수도권매립지관리공사.png" },
+    { name: "해양환경공단", src: "/images/logo_work/해양환경공단.png" },
+    { name: "대한지방행정공제회", src: "/images/logo_work/대한지방행정공제회.png" },
+    { name: "한국토지신탁", src: "/images/logo_work/한국토지신탁.png" },
+    { name: "경상북도청", src: "/images/logo_work/경상북도청.png" },
     
     // 여섯 번째 줄 - 진흥원 및 문화기관, 취업지원, 기타
     { name: "경기도일자리재단", src: "/images/logo_work/경기도일자리재단.png" },
@@ -134,7 +139,6 @@ export default function OurWorksPage() {
     { name: "마포청년나루", src: "/images/logo_work/마포청년나루.png" },
     { name: "하이서울기업협회", src: "/images/logo_work/하이서울기업협회.png" },
     { name: "인천유유기지", src: "/images/logo_work/인천유유기지.png" },
-    { name: "꿈비로고", src: "/images/logo_work/꿈비로고.png" },
   
   ];
 
