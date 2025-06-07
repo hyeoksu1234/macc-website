@@ -63,7 +63,7 @@ export default function OurWorksPage() {
     { name: "이롬", src: "/images/logo_work/이롬.png" },
 
     
-    // 네 번째 줄 - 교육기관 (대학교 집중 배치) - 24개 모든 교육기관
+    // 네 번째 줄 - 교육기관 (대학교 집중 배치) - 23개
     { name: "서울대학교", src: "/images/logo_work/서울대학교.png" },
     { name: "연세대학교", src: "/images/logo_work/연세대학교.png" },
     { name: "고려대학교", src: "/images/logo_work/고려대학교.png" },
@@ -75,7 +75,6 @@ export default function OurWorksPage() {
     { name: "세종대학교", src: "/images/logo_work/세종대.jpg" },
     { name: "세종사이버대학교", src: "/images/logo_work/세종사이버대학교.png" },
     { name: "인천대학교", src: "/images/logo_work/인천대학교.png" },
-    { name: "한국종합예술학교", src: "/images/logo_work/한국종합예술학교.png" },
     { name: "한국예술종합학교", src: "/images/logo_work/한국예술종합학교.png" },
     { name: "부산대", src: "/images/logo_work/부산대.png" },
     { name: "충북대학교", src: "/images/logo_work/충북대학교.png" },
@@ -89,7 +88,7 @@ export default function OurWorksPage() {
     { name: "동원대학교", src: "/images/logo_work/동원대학교.png" },
     { name: "꿈의학교", src: "/images/logo_work/꿈의학교.png" },
     
-    // 다섯 번째 줄 - 공공기관 (지방자치단체 및 기타 공공기관)
+    // 다섯 번째 줄 - 공공기관 (지방자치단체 및 기타 공공기관) - 30개
     { name: "경기도청", src: "/images/logo_work/경기도청.png" },
     { name: "마포구", src: "/images/logo_work/마포구.png" },
     { name: "경상북도청", src: "/images/logo_work/경상북도청.png" },
@@ -203,10 +202,10 @@ export default function OurWorksPage() {
               <LogoBlock logos={clientLogos.slice(40, 51)} />
             </Marquee>
             <Marquee animationClassName="animate-marquee-row4">
-              <LogoBlock logos={clientLogos.slice(51, 75)} />
+              <LogoBlock logos={clientLogos.slice(51, 74)} />
             </Marquee>
             <Marquee animationClassName="animate-marquee-row5">
-              <LogoBlock logos={clientLogos.slice(75, 104)} />
+              <LogoBlock logos={clientLogos.slice(74, 104)} />
             </Marquee>
             <Marquee animationClassName="animate-marquee-row6">
               <LogoBlock logos={clientLogos.slice(104)} />
