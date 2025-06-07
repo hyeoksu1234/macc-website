@@ -36,7 +36,7 @@ export default function MainBizPage() {
         "퇴직 후 필요한 실질적 재무 계획 수립",
         "신중년 커리어 개발을 위한 다양한 지원 정책의 이해"
       ],
-      targetAudience: "은퇴를 앞두거나 제2의 커리어를 준비하는 분 또는 관련 단체",
+      targetAudience: "퇴직을 앞두거나 제2의 커리어를 준비하는 분 또는 관련 단체",
       image: "/images/man.png"
     },
     {
