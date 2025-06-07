@@ -197,7 +197,7 @@ export default function OurWorksPage() {
                     key={`row1-first-${index}`}
                     className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
                   >
-                    <div className="w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg p-3">
+                    <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "롯데상사" || logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
                       <Image
                         src={logo.src}
                         alt={`${logo.name} 로고`}
@@ -214,7 +214,7 @@ export default function OurWorksPage() {
                     key={`row1-second-${index}`}
                     className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
                   >
-                    <div className="w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg p-3">
+                    <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "롯데상사" || logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
                       <Image
                         src={logo.src}
                         alt={`${logo.name} 로고`}
@@ -236,7 +236,7 @@ export default function OurWorksPage() {
                     key={`row2-first-${index}`}
                     className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
                   >
-                    <div className="w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg p-3">
+                    <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "롯데상사" || logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
                       <Image
                         src={logo.src}
                         alt={`${logo.name} 로고`}
@@ -253,7 +253,7 @@ export default function OurWorksPage() {
                     key={`row2-second-${index}`}
                     className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
                   >
-                    <div className="w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg p-3">
+                    <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "롯데상사" || logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
                       <Image
                         src={logo.src}
                         alt={`${logo.name} 로고`}
@@ -275,7 +275,7 @@ export default function OurWorksPage() {
                     key={`row3-first-${index}`}
                     className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
                   >
-                    <div className="w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg p-3">
+                    <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "롯데상사" || logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
                       <Image
                         src={logo.src}
                         alt={`${logo.name} 로고`}
@@ -292,7 +292,7 @@ export default function OurWorksPage() {
                     key={`row3-second-${index}`}
                     className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
                   >
-                    <div className="w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg p-3">
+                    <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "롯데상사" || logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
                       <Image
                         src={logo.src}
                         alt={`${logo.name} 로고`}
@@ -314,7 +314,7 @@ export default function OurWorksPage() {
                     key={`row4-first-${index}`}
                     className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
                   >
-                    <div className="w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg p-3">
+                    <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "롯데상사" || logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
                       <Image
                         src={logo.src}
                         alt={`${logo.name} 로고`}
@@ -331,7 +331,7 @@ export default function OurWorksPage() {
                     key={`row4-second-${index}`}
                     className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
                   >
-                    <div className="w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg p-3">
+                    <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "롯데상사" || logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
                       <Image
                         src={logo.src}
                         alt={`${logo.name} 로고`}
@@ -353,7 +353,7 @@ export default function OurWorksPage() {
                     key={`row5-first-${index}`}
                     className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
                   >
-                    <div className="w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg p-3">
+                    <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "롯데상사" || logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
                       <Image
                         src={logo.src}
                         alt={`${logo.name} 로고`}
@@ -370,7 +370,7 @@ export default function OurWorksPage() {
                     key={`row5-second-${index}`}
                     className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
                   >
-                    <div className="w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg p-3">
+                    <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "롯데상사" || logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
                       <Image
                         src={logo.src}
                         alt={`${logo.name} 로고`}
@@ -392,7 +392,7 @@ export default function OurWorksPage() {
                     key={`row6-first-${index}`}
                     className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
                   >
-                    <div className="w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg p-3">
+                    <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "롯데상사" || logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
                       <Image
                         src={logo.src}
                         alt={`${logo.name} 로고`}
@@ -409,7 +409,7 @@ export default function OurWorksPage() {
                     key={`row6-second-${index}`}
                     className="flex items-center justify-center mx-6 sm:mx-8 md:mx-12 flex-shrink-0"
                   >
-                    <div className="w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg p-3">
+                    <div className={`w-32 h-16 sm:w-36 sm:h-18 md:w-40 md:h-20 lg:w-44 lg:h-22 flex items-center justify-center bg-white rounded-lg ${logo.name === "롯데상사" || logo.name === "DB하이텍" ? "p-0" : "p-3"}`}>
                       <Image
                         src={logo.src}
                         alt={`${logo.name} 로고`}
