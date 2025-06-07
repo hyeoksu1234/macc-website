@@ -158,6 +158,9 @@ const Header = () => {
             )}
           </div>
           
+          <Link href="/our-works" className="text-gray-700 hover:text-[#0061ad] font-medium transition-colors duration-300 break-keep">
+            Our Works
+          </Link>
           <Link href="/blog" className="text-gray-700 hover:text-[#0061ad] font-medium transition-colors duration-300 break-keep">
             칼럼
           </Link>
@@ -261,6 +264,9 @@ const Header = () => {
               )}
             </div>
             
+            <Link href="/our-works" onClick={closeMenu} className="text-gray-700 hover:text-[#0061ad] font-medium py-3 text-base transition-colors duration-300 break-keep border-b border-gray-100">
+              Our Works
+            </Link>
             <Link href="/blog" onClick={closeMenu} className="text-gray-700 hover:text-[#0061ad] font-medium py-3 text-base transition-colors duration-300 break-keep border-b border-gray-100">
               칼럼
             </Link>
