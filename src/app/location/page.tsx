@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import React from 'react';
 
 const LocationPage = () => {
@@ -42,7 +43,7 @@ const LocationPage = () => {
                   </svg>
                   <div>
                     <h3 className="font-semibold text-lg sm:text-xl text-[#0061ad] mb-1 sm:mb-2">전화번호</h3>
-                    <p className="text-sm sm:text-base md:text-lg">+82 10 3406 5414</p>
+                    <p className="text-sm sm:text-base md:text-lg">070-7724-5414</p>
                   </div>
                 </div>
 
@@ -130,10 +131,12 @@ const LocationPage = () => {
                   className="block w-full h-full relative group cursor-pointer"
                   title="네이버 지도에서 위치 확인하기"
                 >
-                  <img
+                  <Image
                     src="/images/location-map.png"
                     alt="마스터피스 얼라이언스 오시는 길"
-                    className="w-full h-full object-contain rounded-lg transition-transform duration-300 group-hover:scale-105"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 70vw"
+                    className="object-contain rounded-lg transition-transform duration-300 group-hover:scale-105"
                   />
                   {/* 호버 오버레이 */}
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300 rounded-lg flex items-center justify-center">
@@ -165,7 +168,7 @@ const LocationPage = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <a
-              href="tel:+821034065414"
+              href="tel:070-7724-5414"
               className="inline-flex items-center justify-center bg-white text-[#0061ad] px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-gray-100 transition-colors duration-300"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">

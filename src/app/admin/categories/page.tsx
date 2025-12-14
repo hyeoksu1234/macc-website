@@ -83,7 +83,7 @@ export default function CategoriesPage() {
         return;
       }
 
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('categories')
         .insert([newCategory])
         .select();

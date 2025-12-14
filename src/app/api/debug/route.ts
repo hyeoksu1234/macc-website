@@ -58,7 +58,7 @@ export async function GET(request: NextRequest) {
     };
     
     // 데이터베이스 연결 테스트 (개발 환경에서만)
-    let dbStatus = {
+    const dbStatus = {
       connected: false,
       message: '운영 환경에서는 DB 테스트를 수행하지 않습니다.',
       postsCount: 0,

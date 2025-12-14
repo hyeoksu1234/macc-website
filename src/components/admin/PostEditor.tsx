@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { supabase } from '@/lib/supabase/client';
 import { Post, Category } from '@/lib/types';
 import dynamic from 'next/dynamic';
@@ -9,7 +10,6 @@ import { generateSlug as generateSlugUtil } from '@/lib/utils/slug-utils';
 
 // 마크다운 에디터 동적 임포트 (클라이언트 측에서만 로드)
 const MDEditor = dynamic(() => import('@uiw/react-md-editor').then(mod => mod.default), { ssr: false });
-const MDPreview = dynamic(() => import('@uiw/react-md-editor').then(mod => mod.default.Markdown), { ssr: false });
 
 // rehype 관련 코드 제거
 
@@ -373,7 +373,7 @@ export default function PostEditor({ post, isEditMode = false }: PostEditorProps
     try {
       new URL(url);
       return true;
-    } catch (e) {
+    } catch {
       return false;
     }
   };
@@ -459,11 +459,15 @@ export default function PostEditor({ post, isEditMode = false }: PostEditorProps
           {featuredImagePreview && (
             <div className="mt-2">
               <div className="flex flex-col">
-                <img
-                  src={featuredImagePreview}
-                  alt="대표 이미지 미리보기"
-                  className="max-w-full h-auto max-h-64 object-contain mb-2"
-                />
+                <div className="relative w-full max-h-64 h-64 mb-2">
+                  <Image
+                    src={featuredImagePreview}
+                    alt="대표 이미지 미리보기"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 800px"
+                    className="object-contain rounded"
+                  />
+                </div>
                 <button
                   type="button"
                   onClick={handleImageDelete}

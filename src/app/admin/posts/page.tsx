@@ -5,8 +5,14 @@ import Link from 'next/link';
 import { supabase } from '@/lib/supabase/client';
 import { Post } from '@/lib/types';
 
+type PostWithCategory = Post & {
+  categories?: {
+    name?: string | null;
+  } | null;
+};
+
 export default function PostsPage() {
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<PostWithCategory[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -40,7 +46,7 @@ export default function PostsPage() {
         throw error;
       }
 
-      setPosts(data as Post[]);
+      setPosts(data as PostWithCategory[]);
 
       // 전체 페이지 수 계산
       let countQuery = supabase.from('posts').select('id', { count: 'exact' });
@@ -150,7 +156,6 @@ export default function PostsPage() {
                       <span className="font-medium">{post.title}</span>
                     </td>
                     <td className="px-4 py-3">
-                      {/* @ts-ignore */}
                       {post.categories?.name || '미분류'}
                     </td>
                     <td className="px-4 py-3">

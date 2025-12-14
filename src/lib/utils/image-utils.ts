@@ -240,14 +240,14 @@ export function getResizedImageUrl(
       // Cloudinary URL 형식: https://res.cloudinary.com/cloud-name/image/upload/c_fit,w_WIDTH,h_HEIGHT,q_QUALITY/filename
       return validUrl.replace(/\/upload\//, `/upload/c_fit,w_${width || 'auto'},h_${height || 'auto'},q_${quality}/`);
       
-    case 'imgix':
+    case 'imgix': {
       // Imgix URL 형식: https://your-source.imgix.net/image.jpg?w=WIDTH&h=HEIGHT&q=QUALITY
       const separator = validUrl.includes('?') ? '&' : '?';
       return `${validUrl}${separator}` + 
           (width ? `w=${width}&` : '') + 
           (height ? `h=${height}&` : '') + 
           `q=${quality}`;
-      
+    }
     case 'supabase':
       // Supabase Storage URL은 현재 공식적인 변환 기능 미지원, 원본 반환
       return validUrl;

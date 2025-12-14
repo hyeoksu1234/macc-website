@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 // create-admin.js
 // 기본 관리자 계정 생성 스크립트
 const { createClient } = require('@supabase/supabase-js');
@@ -94,6 +95,7 @@ async function createAdminUser() {
       console.log('users 테이블이 존재합니다.');
     } catch (tableError) {
       console.log('users 테이블이 존재하지 않습니다. 테이블을 생성합니다...');
+      console.error('테이블 확인 오류:', tableError);
       
       // SQL 명령으로 테이블 생성 (여기서는 service_role 키로 데이터베이스 액세스)
       const { error: sqlError } = await fetch(`${supabaseUrl}/rest/v1/`, {

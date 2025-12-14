@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import ContactForm from "@/components/forms/ContactForm";
 
 export default function ContactPage() {
@@ -87,7 +86,7 @@ export default function ContactPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Link 
-              href="tel:+821034065414" 
+              href="tel:070-7724-5414" 
               className="inline-flex items-center justify-center bg-white text-[#0061ad] px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-gray-100 transition-colors duration-300"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">

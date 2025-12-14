@@ -17,7 +17,7 @@ const corsHeaders = {
   'Access-Control-Max-Age': '86400',
 };
 
-export async function OPTIONS(req: Request) {
+export async function OPTIONS() {
   return new Response(null, {
     status: 200,
     headers: corsHeaders,
@@ -201,7 +201,7 @@ export async function POST(req: Request) {
           <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eaeaea;">
             <p style="margin: 5px 0;"><strong>Masterpiece Alliance</strong></p>
             <p style="margin: 5px 0;">문의: <a href="mailto:leeyoon@ma-cc.co.kr" style="color: #0061ad;">leeyoon@ma-cc.co.kr</a></p>
-            <p style="margin: 5px 0;">전화: <a href="tel:+821034065414" style="color: #0061ad;">010-3406-5414</a></p>
+            <p style="margin: 5px 0;">전화: <a href="tel:070-7724-5414" style="color: #0061ad;">070-7724-5414</a></p>
             <p style="margin: 5px 0;">웹사이트: <a href="https://www.ma-cc.co.kr" style="color: #0061ad;">www.ma-cc.co.kr</a></p>
           </div>
         </div>
@@ -221,13 +221,20 @@ export async function POST(req: Request) {
       
       console.log('모든 이메일 전송 성공:', adminEmail);
     } catch (error) {
+      const mailError = error as {
+        message?: string;
+        code?: string;
+        command?: string;
+        response?: unknown;
+        responseCode?: unknown;
+      };
       console.error('이메일 전송 상세 오류:', {
-        message: (error as any)?.message,
-        code: (error as any)?.code,
-        command: (error as any)?.command,
-        response: (error as any)?.response,
-        responseCode: (error as any)?.responseCode,
-        fullError: error
+        message: mailError?.message,
+        code: mailError?.code,
+        command: mailError?.command,
+        response: mailError?.response,
+        responseCode: mailError?.responseCode,
+        fullError: mailError
       });
       
       // 환경 변수 확인 로그

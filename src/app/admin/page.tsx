@@ -4,6 +4,13 @@ import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase/client';
 import Link from 'next/link';
 
+type DashboardPost = {
+  id: string;
+  title: string;
+  created_at: string;
+  status: 'published' | 'draft' | string;
+};
+
 export default function AdminDashboard() {
   const [stats, setStats] = useState({
     totalPosts: 0,
@@ -12,7 +19,7 @@ export default function AdminDashboard() {
     categories: 0,
   });
   
-  const [recentPosts, setRecentPosts] = useState<any[]>([]);
+  const [recentPosts, setRecentPosts] = useState<DashboardPost[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

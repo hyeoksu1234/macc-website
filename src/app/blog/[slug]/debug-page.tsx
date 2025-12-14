@@ -1,11 +1,22 @@
 'use client';
 
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase/client';
 
+type PostRow = {
+  id: string;
+  slug: string;
+  title: string;
+  featured_image: string | null;
+  status: string;
+  created_at?: string;
+  [key: string]: unknown;
+};
+
 export default function DebugPage({ params }: { params: { slug: string }}) {
-  const [post, setPost] = useState<any>(null);
-  const [allPosts, setAllPosts] = useState<any[]>([]);
+  const [post, setPost] = useState<PostRow | null>(null);
+  const [allPosts, setAllPosts] = useState<PostRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const slug = params.slug;
@@ -27,7 +38,7 @@ export default function DebugPage({ params }: { params: { slug: string }}) {
           throw postError;
         }
 
-        setPost(postData);
+        setPost((postData as PostRow | null) || null);
 
         // 이미지가 있는 모든 포스트를 가져옵니다
         const { data: allPostsData, error: allPostsError } = await supabase
@@ -41,7 +52,7 @@ export default function DebugPage({ params }: { params: { slug: string }}) {
           throw allPostsError;
         }
 
-        setAllPosts(allPostsData || []);
+        setAllPosts((allPostsData as PostRow[] | null) || []);
       } catch (err) {
         console.error('데이터 조회 중 오류:', err);
         setError('데이터를 불러오는 중 오류가 발생했습니다.');
@@ -128,35 +139,36 @@ export default function DebugPage({ params }: { params: { slug: string }}) {
                 </tr>
               </thead>
               <tbody>
-                {allPosts.map((post) => (
-                  <tr key={post.id} className={post.slug === slug ? "bg-yellow-50" : ""}>
-                    <td className="py-2 px-3 border-b">{post.id.substring(0, 8)}...</td>
-                    <td className="py-2 px-3 border-b">{post.title}</td>
+                {allPosts.map((postRow) => (
+                  <tr key={postRow.id} className={postRow.slug === slug ? "bg-yellow-50" : ""}>
+                    <td className="py-2 px-3 border-b">{postRow.id.substring(0, 8)}...</td>
+                    <td className="py-2 px-3 border-b">{postRow.title}</td>
                     <td className="py-2 px-3 border-b">
-                      <span className={post.status === 'published' ? 'text-green-600' : 'text-gray-500'}>
-                        {post.status === 'published' ? '발행됨' : '초안'}
+                      <span className={postRow.status === 'published' ? 'text-green-600' : 'text-gray-500'}>
+                        {postRow.status === 'published' ? '발행됨' : '초안'}
                       </span>
                     </td>
                     <td className="py-2 px-3 border-b font-mono text-xs break-all">
-                      {post.slug}
-                      {post.slug.includes('--') && (
+                      {postRow.slug}
+                      {postRow.slug.includes('--') && (
                         <span className="text-xs text-red-500 ml-1">중복 하이픈</span>
                       )}
                     </td>
                     <td className="py-2 px-3 border-b">
                       <div className="w-12 h-12 relative">
-                        <img 
-                          src={post.featured_image} 
-                          alt={post.title}
-                          className="w-full h-full object-cover"
-                          style={{ maxWidth: "48px", maxHeight: "48px" }}
+                        <Image
+                          src={postRow.featured_image || '/og-image.png'}
+                          alt={postRow.title}
+                          fill
+                          sizes="48px"
+                          className="object-cover rounded"
                         />
                       </div>
                     </td>
                     <td className="py-2 px-3 border-b">
                       <div className="flex space-x-2">
                         <a 
-                          href={`/blog/${post.slug}`}
+                          href={`/blog/${postRow.slug}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-blue-600 hover:underline text-sm"
@@ -164,13 +176,13 @@ export default function DebugPage({ params }: { params: { slug: string }}) {
                           보기
                         </a>
                         <button
-                          onClick={() => navigator.clipboard.writeText(post.slug)}
+                          onClick={() => navigator.clipboard.writeText(postRow.slug)}
                           className="text-gray-500 hover:text-gray-700 text-sm"
                         >
                           복사
                         </button>
                         <button
-                          onClick={() => fixSlug(post.id, post.slug)}
+                          onClick={() => fixSlug(postRow.id, postRow.slug)}
                           className="text-orange-600 hover:text-orange-800 text-sm"
                         >
                           수정

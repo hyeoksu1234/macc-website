@@ -1,5 +1,26 @@
 {
-  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/about/page": "app/about/page.js",
-  "/location/page": "app/location/page.js"
+  "/admin-login/page": "app/admin-login/page.js",
+  "/admin/categories/page": "app/admin/categories/page.js",
+  "/admin/check-slugs/page": "app/admin/check-slugs/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/admin/posts/[id]/edit/page": "app/admin/posts/[id]/edit/page.js",
+  "/admin/posts/new/page": "app/admin/posts/new/page.js",
+  "/admin/posts/page": "app/admin/posts/page.js",
+  "/api/contact/route": "app/api/contact/route.js",
+  "/api/debug/route": "app/api/debug/route.js",
+  "/api/revalidate/route": "app/api/revalidate/route.js",
+  "/api/route": "app/api/route.js",
+  "/blog/[slug]/page": "app/blog/[slug]/page.js",
+  "/blog/category/[slug]/page": "app/blog/category/[slug]/page.js",
+  "/blog/page": "app/blog/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/location/page": "app/location/page.js",
+  "/our-works/page": "app/our-works/page.js",
+  "/page": "app/page.js",
+  "/services/main-biz/page": "app/services/main-biz/page.js",
+  "/services/workshops/page": "app/services/workshops/page.js"
 }

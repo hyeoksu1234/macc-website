@@ -118,7 +118,7 @@ export default function Home() {
           
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8">
-              {beTexts.map((text, index) => (
+              {beTexts.map((text) => (
                 <div
                   key={text.suffix}
                   className="group relative overflow-hidden bg-white p-5 sm:p-6 md:p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-1"
@@ -153,7 +153,7 @@ export default function Home() {
           </div>
           
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
-            {services.map((service, index) => (
+            {services.map((service) => (
               <Link
                 key={service.id}
                 href={service.id === 5 ? "/services/workshops" : "/services/main-biz"}

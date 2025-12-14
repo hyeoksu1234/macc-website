@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { supabase } from '@/lib/supabase/client';
 import { Post } from '@/lib/types';
 import { remark } from 'remark';

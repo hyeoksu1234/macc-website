@@ -22,34 +22,6 @@ export default function AboutPage() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // 임시 핵심 가치 데이터
-  const coreValues = [
-    {
-      id: 1,
-      title: "전문성",
-      description: "다년간의 경험과 전문지식을 바탕으로 최상의 코칭 서비스를 제공합니다.",
-      icon: "🎯"
-    },
-    {
-      id: 2,
-      title: "신뢰",
-      description: "고객과의 신뢰 관계를 최우선으로 생각하며, 정직하고 투명한 소통을 지향합니다.",
-      icon: "🤝"
-    },
-    {
-      id: 3,
-      title: "혁신",
-      description: "변화하는 시대에 맞춰 지속적으로 새로운 접근법과 방법론을 개발합니다.",
-      icon: "💡"
-    },
-    {
-      id: 4,
-      title: "성장",
-      description: "고객의 지속적인 성장과 발전을 위해 실질적인 변화를 이끌어냅니다.",
-      icon: "🌱"
-    }
-  ];
-
   // 전문가 팀 멤버 데이터
   const teamMembers = [
     {
